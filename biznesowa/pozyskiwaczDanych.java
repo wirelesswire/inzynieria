@@ -7,7 +7,7 @@ public class pozyskiwaczDanych {
 	private int uzytkownik;
 	private Strategia strategia;
 
-	public void pozyskajDane() {
+	public pozyskaneDane pozyskajDane() {
 		// TODO - implement pozyskiwaczDanych.pozyskajDane
 		throw new UnsupportedOperationException();
 	}
@@ -34,12 +34,6 @@ public class pozyskiwaczDanych {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param strategia
-	 */
-	public void setStrategia(Strategia strategia) {
-		this.strategia = strategia;
-	}
+
 
 }

@@ -1,16 +1,17 @@
 package biznesowa;
 
 import dane.dane;
+import dane.*;
 
 public class uslugodawcaStrategy implements Strategia {
 
+
 	/**
 	 * 
-	 * @param dane
+	 * @param uzytkownik
 	 */
-	public void przetworzDane(dane dane) {
-		// TODO - implement uslugodawcaStrategy.przetworzDane
-		throw new UnsupportedOperationException();
+	public pozyskaneDane przetworzDane(uzytkownik uzytkownik) {
+return  null ;
 	}
 
 

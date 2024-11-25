@@ -2,6 +2,6 @@ package biznesowa;
 
 public class daneDlaUzytkownika {
 
-	private wiadomosc wiadomosc;
+	public wiadomosc wiadomosc;
 
 }

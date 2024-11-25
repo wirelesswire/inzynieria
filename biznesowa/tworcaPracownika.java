@@ -1,6 +1,6 @@
 package biznesowa;
 
-public class tworcaPracownika extends tworcaDanych {
+public class tworcaPracownika extends tworcaWidoku {
 
 	public daneDlaPracownika stworzDane() {
 		// TODO - implement tworcaPracownika.stworzDane

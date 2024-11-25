@@ -9,6 +9,7 @@ public class biznesowa implements przetwarzanieDanych {
 	private edytorBazy edytorbazy;
 	private pozyskiwaczDanych pozyskiwacz;
 	public widok widok;
+	private pozyskaneDane daneUzytkownika;
 
 	/**
 	 * 
