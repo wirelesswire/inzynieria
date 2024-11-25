@@ -11,8 +11,31 @@ public class czyIstnieje implements obslugaLogowania {
 	 * @param pozyskiwaczDanych
 	 */
 	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
-		// TODO - implement czyIstnieje.sprawdz
-		throw new UnsupportedOperationException();
+		wiadomosc w = new wiadomosc();
+
+		boolean exists = false ;
+		for (int i = 0; i < pozyskiwaczDanych.pozyskaneDane.uzytkownicy.length ; i++) {
+			if(pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i].getLogin() == login){
+
+			}
+
+		}
+		if(exists){
+			if(next == null){
+				return w ;
+			}
+			return next(login);
+		}
+		else {
+			w.tresc = "konto o podanym loginie nie istenije";
+		}
+
+//
+//		if(w.tresc == null){
+//			if()
+//		}
+		w.tresc = "błąd krytyczny(tu nie powinno nigdy dojsc )";
+		return w ;
 	}
 
 	/**

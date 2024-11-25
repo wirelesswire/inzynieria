@@ -11,12 +11,30 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 	 * @param pozyskiwaczDanych
 	 */
 	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
-		if(pozyskiwaczDanych.pozyskaneDane.)
+		wiadomosc w = new wiadomosc();
 
+		for (int i = 0; i < pozyskiwaczDanych.pozyskaneDane.uzytkownicy.length ; i++) {
+			if(pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i].getLogin() == login){
+				if(pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i].getHaslo() == haslo){
+//					w.tresc="zalogowano pomyslnie";
+				}
+				w.tresc="błędne haslo";
+				return  w;
+			}
 
+		}
+		if(w.tresc == null){
 
-//		// TODO - implement czyHasloSieZgadza.sprawdz
-//		throw new UnsupportedOperationException();
+			if(next != null){
+				return  next.sprawdz(login, haslo, pozyskiwaczDanych);
+			}
+			else{
+				return  null ;
+			}
+		}
+		w.tresc = "błąd krytyczny(tu nie powinno nigdy dojsc )";
+		return w ;
+
 	}
 
 	/**
