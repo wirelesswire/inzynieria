@@ -12,12 +12,10 @@ public  class Start {
 
         edytorBazy edytorBazy = new edytorBazy();
         biznesowa biznesowa = new biznesowa(edytorBazy,widok) ;
+
         widok.warstwaBiznesowa = biznesowa;
 
-
         dane dane = new dane();
-
-
 
         widok.pokazLogowanie();
         wiadomosc w = new wiadomosc();

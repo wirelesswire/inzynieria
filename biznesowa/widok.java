@@ -2,6 +2,7 @@ package biznesowa;
 
 import widok.*;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class widok implements zmianaWidoku {
@@ -99,16 +100,11 @@ public class widok implements zmianaWidoku {
 
 	public boolean poprosOPotwierdzenie() {
 		System.out.println("Potwierdz wybraną operację  [tak/NIE]");
-
 		String line = scanner.nextLine();
-
-		if(line =="tak" ){
+		if(Objects.equals(line, "tak")){
 			System.out.println("potwierdzono");
-
 			return  true ;
-
 		}
-
 		return false  ;
 	}
 	public void wyswietlWidokKlienta() {

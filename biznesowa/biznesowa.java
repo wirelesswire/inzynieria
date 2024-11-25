@@ -40,11 +40,7 @@ public class biznesowa implements przetwarzanieDanych {
 			default:
 				System.out.println("lol");
 		}
-
-		// TODO - implement biznesowa.kliknietyPrzycisk
-		throw new UnsupportedOperationException();
 	}
-
 	/**
 	 * 
 	 * @param edytor
@@ -61,13 +57,6 @@ public class biznesowa implements przetwarzanieDanych {
 		czy1.setNext(czy2);
 		czy2.setNext(czy3);
 
-
-
-
-
-
-//		 TODO - implement biznesowa.biznesowa
-//		throw new UnsupportedOperationException();
 	}
 
 }

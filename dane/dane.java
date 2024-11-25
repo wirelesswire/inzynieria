@@ -33,10 +33,9 @@ public class dane implements dostepDoDanych {
 	public baza zwrocBaze() {
 		return baza ;
 	}
-
 	@Override
 	public void ustawBaze(baza baza) {
-		return;
+		this.baza = baza;
 	}
 
 	public usluga[] zwrocUslugi() {
