@@ -12,7 +12,8 @@ public interface obslugaLogowania {
 	 * 
 	 * @param login
 	 * @param haslo
+	 * @param pozyskiwaczDanych
 	 */
-	wiadomosc sprawdz(String login, String haslo);
+	wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych);
 
 }

@@ -1,14 +1,16 @@
 package biznesowa;
 
 import dane.dane;
+import dane.*;
 
 public interface Strategia {
 
+
 	/**
 	 * 
-	 * @param dane
+	 * @param uzytkownik
 	 */
-	void przetworzDane(dane dane);
+	pozyskaneDane przetworzDane(uzytkownik uzytkownik);
 
 
 }

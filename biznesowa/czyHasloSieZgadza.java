@@ -8,8 +8,9 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 	 * 
 	 * @param login
 	 * @param haslo
+	 * @param pozyskiwaczDanych
 	 */
-	public wiadomosc sprawdz(String login, String haslo) {
+	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
 		// TODO - implement czyHasloSieZgadza.sprawdz
 		throw new UnsupportedOperationException();
 	}

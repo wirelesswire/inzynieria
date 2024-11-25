@@ -8,8 +8,9 @@ public class czyJestAktywny implements obslugaLogowania {
 	 * 
 	 * @param login
 	 * @param haslo
+	 * @param pozyskiwaczDanych
 	 */
-	public wiadomosc sprawdz(String login, String haslo) {
+	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
 		// TODO - implement czyJestAktywny.sprawdz
 		throw new UnsupportedOperationException();
 	}
