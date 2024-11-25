@@ -7,6 +7,7 @@ public class biznesowa implements przetwarzanieDanych {
 	private uzytkownik uzytkownik;
 	private edytorBazy edytorbazy;
 	private pozyskiwaczDanych pozyskiwacz;
+	private widok widok;
 
 	/**
 	 * 
@@ -26,8 +27,9 @@ public class biznesowa implements przetwarzanieDanych {
 	/**
 	 * 
 	 * @param przycisk
+	 * @param argumenty
 	 */
-	public void kliknietyPrzycisk(string przycisk) {
+	public void kliknietyPrzycisk(string przycisk, string[] argumenty) {
 		// TODO - implement biznesowa.kliknietyPrzycisk
 		throw new UnsupportedOperationException();
 	}

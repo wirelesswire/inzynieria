@@ -16,4 +16,10 @@ public interface dostepDoDanych {
 
 	baza zwrocBaze();
 
+	/**
+	 * 
+	 * @param baza
+	 */
+	void ustawBaze(baza baza);
+
 }

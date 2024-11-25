@@ -4,7 +4,7 @@ import dane.*;
 
 public class edytorBazy {
 
-	private baza baza;
+	private dane.dane dane;
 
 	public void pomozTechnicznie() {
 		// TODO - implement edytorBazy.pomozTechnicznie

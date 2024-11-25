@@ -7,12 +7,11 @@ public interface przetwarzanieDanych {
 	 */
 	daneDlaUzytkownika zaloguj(string login, string haslo);
 
-	void przekazDane();
-
 	/**
 	 * 
 	 * @param przycisk
+	 * @param argumenty
 	 */
-	void kliknietyPrzycisk(string przycisk);
+	void kliknietyPrzycisk(string przycisk, string[] argumenty);
 
 }

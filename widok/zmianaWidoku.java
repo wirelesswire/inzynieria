@@ -10,4 +10,6 @@ public interface zmianaWidoku {
 
 	boolean poprosOPotwierdzenie();
 
+	void wyswietlWiadomosc();
+
 }
