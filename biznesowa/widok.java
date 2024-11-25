@@ -185,4 +185,13 @@ public class widok implements zmianaWidoku {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * 
+	 * @param dane
+	 */
+	private void wynikLogowania(daneDlaUzytkownika dane) {
+		// TODO - implement widok.wynikLogowania
+		throw new UnsupportedOperationException();
+	}
+
 }
