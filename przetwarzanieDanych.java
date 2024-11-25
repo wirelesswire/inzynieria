@@ -1,3 +1,5 @@
+import biznesowa.daneDlaUzytkownika;
+
 public interface przetwarzanieDanych {
 
 	/**
