@@ -64,6 +64,8 @@ public class biznesowa implements przetwarzanieDanych {
 
 
 
+
+
 //		 TODO - implement biznesowa.biznesowa
 //		throw new UnsupportedOperationException();
 	}

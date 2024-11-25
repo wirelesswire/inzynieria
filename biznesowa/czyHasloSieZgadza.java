@@ -11,8 +11,12 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 	 * @param pozyskiwaczDanych
 	 */
 	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
-		// TODO - implement czyHasloSieZgadza.sprawdz
-		throw new UnsupportedOperationException();
+		if(pozyskiwaczDanych.)
+
+
+
+//		// TODO - implement czyHasloSieZgadza.sprawdz
+//		throw new UnsupportedOperationException();
 	}
 
 	/**
