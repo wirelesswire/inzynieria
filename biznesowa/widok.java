@@ -38,7 +38,6 @@ public class widok implements zmianaWidoku {
 //		// TODO - implement widok.zlecSprawdzenieDanych
 //		throw new UnsupportedOperationException();
 	}
-
 	/**
 	 * 
 	 * @param dane
@@ -122,10 +121,15 @@ public class widok implements zmianaWidoku {
 
 	@Override
 	public void wyswietlWiadomosc(wiadomosc wiadomosc) {
-		if(wiadomosc.tresc == null || wiadomosc.kolor == null ){
-			System.out.println("wiadomosc debug ");
+//		if(wiadomosc.tresc == null || wiadomosc.kolor == null ){
+//			System.out.println("wiadomosc debug ");
+//			return;
+//		}
+	if(wiadomosc.kolor == null){
+		System.out.println( wiadomosc.tresc);
 		return;
-		}
+	}
+
 
 		System.out.println(wiadomosc.kolor + wiadomosc.tresc);
 	}

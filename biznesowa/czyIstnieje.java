@@ -1,10 +1,13 @@
 package biznesowa;
 
+import dane.uzytkownik;
+
 import java.util.Objects;
 
 public class czyIstnieje implements obslugaLogowania {
 
 	private obslugaLogowania next;
+	public uzytkownik user;
 
 	/**
 	 * 
@@ -17,10 +20,12 @@ public class czyIstnieje implements obslugaLogowania {
 
 		boolean exists = false ;
 		for (int i = 0; i < pozyskiwaczDanych.pozyskaneDane.uzytkownicy.length ; i++) {
-			if(Objects.equals(pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i].getLogin(), login)){
+			uzytkownik tmpuser = pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i];
+			if(Objects.equals(tmpuser.getLogin(), login)){
 				exists = true;
+				this.user =tmpuser;
+				break;
 			}
-
 		}
 		if(exists){
 			if(next == null){

@@ -20,11 +20,10 @@ public  class Start {
         dane.ustawBaze(b);
         biznesowa.dane = dane;
 
+
+
         widok.pokazLogowanie();
-        wiadomosc w = new wiadomosc();
-        w.kolor = "\033[0;31m";
-        w.tresc = "tresc ";
-        widok.wyswietlWiadomosc(w);
+
 
 
 

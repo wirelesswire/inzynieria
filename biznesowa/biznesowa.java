@@ -10,7 +10,7 @@ public class biznesowa implements przetwarzanieDanych {
 	private pozyskiwaczDanych pozyskiwacz;
 	public widok widok;
 	private pozyskaneDane daneUzytkownika;
-	private obslugaLogowania obslugaLogowania;
+	private czyIstnieje obslugaLogowania;
 	public dane dane;
 
 	/**
@@ -41,9 +41,16 @@ public class biznesowa implements przetwarzanieDanych {
 				p.setStrategia(s);
 				p.pozyskajDane();
 				wiadomosc x = obslugaLogowania.sprawdz(argumenty[0],argumenty[1],p);
-				widok.wyswietlWiadomosc(x);
+				if(x.tresc == null ){
+					this.uzytkownik = obslugaLogowania.user;
+
+				}
+				else{
+					widok.wyswietlWiadomosc(x);
+				}
+
 				break;
-//			case ""
+
 			default:
 				System.out.println("lol");
 		}
