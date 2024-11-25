@@ -1,12 +1,29 @@
 package widok;
-
+import java.io.*;
 import biznesowa.daneDlaUzytkownika;
 
 public class widok implements zmianaWidoku {
 
 	private daneDlaUzytkownika dane;
+	Console console;
+
+	public widok(){
+		console = System.console();
+	}
 
 	public void pokazLogowanie() {
+
+
+		System.out.println("podaj login i hasło ");
+		System.out.println("login :  ");
+
+		String login  = console.readLine();
+
+		System.out.println("hasło :  ");
+
+		String haslo  = console.readLine();
+
+
 		// TODO - implement widok.pokazLogowanie
 		throw new UnsupportedOperationException();
 	}
