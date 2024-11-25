@@ -4,37 +4,28 @@ import dane.*;
 
 public class pozyskiwaczDanych {
 
-	private int uzytkownik;
+	private uzytkownik uzytkownik;
 	private Strategia strategia;
+
+	// Przechowywanie pozyskanych danych
 	public pozyskaneDane pozyskaneDane;
 
-	public pozyskaneDane pozyskajDane() {
-		// TODO - implement pozyskiwaczDanych.pozyskajDane
-		throw new UnsupportedOperationException();
+	// Konstruktor
+	public pozyskiwaczDanych(uzytkownik uzytkownik) {
+		this.uzytkownik = uzytkownik;
 	}
 
-	/**
-	 * 
-	 * @param strategia
-	 */
+	// Ustawienie strategii
 	public void setStrategia(Strategia strategia) {
 		this.strategia = strategia;
 	}
 
-	/**
-	 * 
-	 * @param uzytkownik
-	 */
-	public pozyskiwaczDanych(uzytkownik uzytkownik) {
-		// TODO - implement pozyskiwaczDanych.pozyskiwaczDanych
-		throw new UnsupportedOperationException();
+	// Metoda pozyskiwania danych
+	public pozyskaneDane pozyskajDane() {
+		if (strategia == null) {
+			throw new IllegalStateException("Strategia nie została ustawiona.");
+		}
+		this.pozyskaneDane = strategia.przetworzDane(uzytkownik);
+		return this.pozyskaneDane;
 	}
-
-	public void operation() {
-		// TODO - implement pozyskiwaczDanych.operation
-		throw new UnsupportedOperationException();
-	}
-
-
-
 }

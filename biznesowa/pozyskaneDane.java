@@ -10,5 +10,4 @@ public class pozyskaneDane {
 	public uslugodawca[] uslugodawcy;
 	public oferta[] ofery;
 	public problem[] problemy;
-
 }

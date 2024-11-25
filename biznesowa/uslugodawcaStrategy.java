@@ -1,18 +1,23 @@
 package biznesowa;
 
-import dane.dane;
 import dane.*;
 
 public class uslugodawcaStrategy implements Strategia {
 
-
-	/**
-	 * 
-	 * @param uzytkownik
-	 */
+	@Override
 	public pozyskaneDane przetworzDane(uzytkownik uzytkownik) {
-return  null ;
+		if (!(uzytkownik instanceof uslugodawca)) {
+			throw new IllegalArgumentException("Podany użytkownik nie jest usługodawcą.");
+		}
+
+		uslugodawca uslugodawca = (uslugodawca) uzytkownik;
+		pozyskaneDane pozyskaneDane = new pozyskaneDane();
+
+		// Wypełnianie danych specyficznych dla usługodawcy
+		pozyskaneDane.uslugodawcy = new uslugodawca[] {uslugodawca};
+		pozyskaneDane.uzytkownicy = new uzytkownik[] {uslugodawca};
+		pozyskaneDane.ofery = uslugodawca.getDostepneOferty();
+
+		return pozyskaneDane;
 	}
-
-
 }
