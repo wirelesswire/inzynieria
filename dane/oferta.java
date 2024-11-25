@@ -2,7 +2,7 @@ package dane;
 
 public class oferta {
 
-	private String cena;
+	private float cena;
 	private String nazwa;
 	private uslugodawca dostawca;
 	private String opis;
