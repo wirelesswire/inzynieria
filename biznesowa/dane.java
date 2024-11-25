@@ -23,7 +23,7 @@ public class dane implements dostepDoDanych {
 		return baza.klienci;
 		throw new UnsupportedOperationException();
 	}
-
+22222
 	public uslugodawca[] zwrocUslugodawcow() {
 		return baza.uslugodawcy;
 		// TODO - implement dane.pobierzUslugodawcow

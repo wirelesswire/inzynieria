@@ -5,7 +5,7 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 	private obslugaLogowania next;
 
 	/**
-	 * 
+	 *
 	 * @param login
 	 * @param haslo
 	 */
