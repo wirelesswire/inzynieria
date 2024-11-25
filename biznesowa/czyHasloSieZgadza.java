@@ -11,7 +11,7 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 	 * @param pozyskiwaczDanych
 	 */
 	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
-		if(pozyskiwaczDanych.)
+		if(pozyskiwaczDanych.pozyskaneDane.)
 
 
 
