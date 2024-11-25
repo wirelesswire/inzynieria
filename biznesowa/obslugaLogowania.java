@@ -13,6 +13,6 @@ public interface obslugaLogowania {
 	 * @param login
 	 * @param haslo
 	 */
-	wiadomosc sprawdz(string login, string haslo);
+	wiadomosc sprawdz(String login, String haslo);
 
 }

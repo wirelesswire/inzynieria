@@ -5,13 +5,13 @@ public interface przetwarzanieDanych {
 	 * @param login
 	 * @param haslo
 	 */
-	daneDlaUzytkownika zaloguj(string login, string haslo);
+	daneDlaUzytkownika zaloguj(String login, String haslo);
 
 	/**
 	 * 
 	 * @param przycisk
 	 * @param argumenty
 	 */
-	void kliknietyPrzycisk(string przycisk, string[] argumenty);
+	void kliknietyPrzycisk(String przycisk, String[] argumenty);
 
 }

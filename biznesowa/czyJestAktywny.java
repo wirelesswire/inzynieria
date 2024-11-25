@@ -9,7 +9,7 @@ public class czyJestAktywny implements obslugaLogowania {
 	 * @param login
 	 * @param haslo
 	 */
-	public wiadomosc sprawdz(string login, string haslo) {
+	public wiadomosc sprawdz(String login, String haslo) {
 		// TODO - implement czyJestAktywny.sprawdz
 		throw new UnsupportedOperationException();
 	}

@@ -14,7 +14,7 @@ public class biznesowa implements przetwarzanieDanych {
 	 * @param login
 	 * @param haslo
 	 */
-	public daneDlaUzytkownika zaloguj(string login, string haslo) {
+	public daneDlaUzytkownika zaloguj(String login, String haslo) {
 		// TODO - implement biznesowa.zaloguj
 		throw new UnsupportedOperationException();
 	}
@@ -29,7 +29,7 @@ public class biznesowa implements przetwarzanieDanych {
 	 * @param przycisk
 	 * @param argumenty
 	 */
-	public void kliknietyPrzycisk(string przycisk, string[] argumenty) {
+	public void kliknietyPrzycisk(String przycisk, String[] argumenty) {
 		// TODO - implement biznesowa.kliknietyPrzycisk
 		throw new UnsupportedOperationException();
 	}

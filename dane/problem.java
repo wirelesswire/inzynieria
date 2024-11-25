@@ -2,8 +2,8 @@ package dane;
 
 public class problem {
 
-	private string opis;
-	private string nazwa;
+	private String opis;
+	private String nazwa;
 	private uzytkownik zglaszajacy;
 
 }
