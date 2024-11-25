@@ -35,4 +35,16 @@ public class biznesowa implements przetwarzanieDanych {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * 
+	 * @param edytor
+	 * @param widok
+	 */
+	public biznesowa(edytorBazy edytor, widok widok) {
+		this.edytorbazy = edytor;
+		this.pozyskiwacz = pozyskiwacz;
+		// TODO - implement biznesowa.biznesowa
+		throw new UnsupportedOperationException();
+	}
+
 }

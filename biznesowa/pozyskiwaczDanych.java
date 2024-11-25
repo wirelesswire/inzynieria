@@ -34,4 +34,12 @@ public class pozyskiwaczDanych {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * 
+	 * @param strategia
+	 */
+	public void setStrategia(Strategia strategia) {
+		this.strategia = strategia;
+	}
+
 }
