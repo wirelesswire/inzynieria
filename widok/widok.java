@@ -1,6 +1,6 @@
-package biznesowa;
+package widok;
 
-import widok.*;
+import biznesowa.daneDlaUzytkownika;
 
 public class widok implements zmianaWidoku {
 
@@ -94,6 +94,8 @@ public class widok implements zmianaWidoku {
 		// TODO - implement widok.wyswietlWidokUslugodawcy
 		throw new UnsupportedOperationException();
 	}
+
+
 
 
 

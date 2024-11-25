@@ -2,7 +2,7 @@ package biznesowa;
 
 import dane.dane;
 
-public class pracownikStrategy implements strategia {
+public class pracownikStrategy implements Strategia {
 
 	/**
 	 * 
@@ -12,5 +12,7 @@ public class pracownikStrategy implements strategia {
 		// TODO - implement pracownikStrategy.przetworzDane
 		throw new UnsupportedOperationException();
 	}
+
+
 
 }

@@ -1,6 +1,7 @@
 package biznesowa;
 
 import dane.*;
+import widok.*;
 
 public class biznesowa implements przetwarzanieDanych {
 
