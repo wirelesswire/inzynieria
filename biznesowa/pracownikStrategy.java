@@ -1,5 +1,7 @@
 package biznesowa;
 
+import dane.dane;
+
 public class pracownikStrategy implements strategia {
 
 	/**
