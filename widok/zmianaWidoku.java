@@ -1,15 +1,16 @@
 package widok;
 
+import biznesowa.wiadomosc;
+
 public interface zmianaWidoku {
 
-	void wyswietlWidokKlienta();
+	public void wyswietlWidokKlienta();
 
-	void wyswietlWidokUslugodawcy();
+	public void wyswietlWidokUslugodawcy();
 
-	void wyswietlWidokPracownika();
+	public void wyswietlWidokPracownika();
 
-	boolean poprosOPotwierdzenie();
+	public boolean poprosOPotwierdzenie();
 
-	void wyswietlWiadomosc();
-
+	public void wyswietlWiadomosc(wiadomosc wiadomosc);
 }

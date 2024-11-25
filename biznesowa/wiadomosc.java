@@ -1,8 +1,6 @@
 package biznesowa;
 
 public class wiadomosc {
-
-	private int tresc;
-	private int kolor;
-
+	public String tresc;
+	public String kolor;
 }
