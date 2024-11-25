@@ -20,16 +20,19 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 				if(Objects.equals(tmpUser.getHaslo(), haslo)){
 //					w.tresc="zalogowano pomyslnie";
 				}
-				w.tresc="błędne haslo";
-				return  w;
+				else {
+					w.tresc="błędne haslo";
+					return  w;
+				}
+				break;
 			}
 		}
 
-			if(next != null && w.tresc == null){
-				return  next.sprawdz(login, haslo, pozyskiwaczDanych);
-			}
+		if(next != null && w.tresc == null){
+			return  next.sprawdz(login, haslo, pozyskiwaczDanych);
+		}
 
-		w.tresc = "błąd krytyczny(tu nie powinno nigdy dojsc )";
+//		w.tresc = "błąd krytyczny(tu nie powinno nigdy dojsc )";
 		return w ;
 	}
 	/**

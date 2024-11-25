@@ -27,8 +27,6 @@ public class widok implements zmianaWidoku {
 
 		zlecSprawdzenieDanych(login,haslo);
 	}
-
-
 	/**
 	 * 
 	 * @param login
@@ -124,6 +122,10 @@ public class widok implements zmianaWidoku {
 
 	@Override
 	public void wyswietlWiadomosc(wiadomosc wiadomosc) {
+		if(wiadomosc.tresc == null || wiadomosc.kolor == null ){
+			System.out.println("wiadomosc debug ");
+		return;
+		}
 
 		System.out.println(wiadomosc.kolor + wiadomosc.tresc);
 	}

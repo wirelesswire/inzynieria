@@ -9,6 +9,7 @@ public class pozyskiwaczDanych {
 
 	// Przechowywanie pozyskanych danych
 	public pozyskaneDane pozyskaneDane;
+	public dane dane;
 
 	// Konstruktor
 	public pozyskiwaczDanych(uzytkownik uzytkownik) {
@@ -27,5 +28,12 @@ public class pozyskiwaczDanych {
 		}
 		this.pozyskaneDane = strategia.przetworzDane(uzytkownik);
 		return this.pozyskaneDane;
+	}
+
+
+
+	public void operation() {
+		// TODO - implement pozyskiwaczDanych.operation
+		throw new UnsupportedOperationException();
 	}
 }

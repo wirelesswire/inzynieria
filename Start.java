@@ -16,6 +16,9 @@ public  class Start {
         widok.warstwaBiznesowa = biznesowa;
 
         dane dane = new dane();
+        baza b = new baza();
+        dane.ustawBaze(b);
+        biznesowa.dane = dane;
 
         widok.pokazLogowanie();
         wiadomosc w = new wiadomosc();

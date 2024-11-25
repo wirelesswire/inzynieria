@@ -1,5 +1,7 @@
 package biznesowa;
 
+import java.util.Objects;
+
 public class czyIstnieje implements obslugaLogowania {
 
 	private obslugaLogowania next;
@@ -15,8 +17,8 @@ public class czyIstnieje implements obslugaLogowania {
 
 		boolean exists = false ;
 		for (int i = 0; i < pozyskiwaczDanych.pozyskaneDane.uzytkownicy.length ; i++) {
-			if(pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i].getLogin() == login){
-
+			if(Objects.equals(pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i].getLogin(), login)){
+				exists = true;
 			}
 
 		}
@@ -34,7 +36,7 @@ public class czyIstnieje implements obslugaLogowania {
 //		if(w.tresc == null){
 //			if()
 //		}
-		w.tresc = "błąd krytyczny(tu nie powinno nigdy dojsc )";
+//		w.tresc = "błąd krytyczny(tu nie powinno nigdy dojsc )";
 		return w ;
 	}
 

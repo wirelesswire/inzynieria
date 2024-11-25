@@ -10,6 +10,8 @@ public class biznesowa implements przetwarzanieDanych {
 	private pozyskiwaczDanych pozyskiwacz;
 	public widok widok;
 	private pozyskaneDane daneUzytkownika;
+	private obslugaLogowania obslugaLogowania;
+	public dane dane;
 
 	/**
 	 * 
@@ -34,7 +36,12 @@ public class biznesowa implements przetwarzanieDanych {
 	public void kliknietyPrzycisk(String przycisk, String[] argumenty) {
 		switch (przycisk){
 			case "zaloguj":
-
+				pozyskiwaczDanych p = new pozyskiwaczDanych(null); // null tylko tutaj w reszcie zapewne błąd
+				Strategia s = new logowanieStrategy(this.dane);
+				p.setStrategia(s);
+				p.pozyskajDane();
+				wiadomosc x = obslugaLogowania.sprawdz(argumenty[0],argumenty[1],p);
+				widok.wyswietlWiadomosc(x);
 				break;
 //			case ""
 			default:
@@ -49,13 +56,15 @@ public class biznesowa implements przetwarzanieDanych {
 	public biznesowa(edytorBazy edytor, widok widok) {
 		this.edytorbazy = edytor;
 		this.pozyskiwacz = pozyskiwacz;
-
+		this.widok = widok;
 		czyIstnieje czy1 = new czyIstnieje();
 		czyHasloSieZgadza czy2 = new czyHasloSieZgadza();
 		czyJestAktywny czy3 = new czyJestAktywny();
 
 		czy1.setNext(czy2);
 		czy2.setNext(czy3);
+
+		this.obslugaLogowania = czy1;
 
 	}
 
