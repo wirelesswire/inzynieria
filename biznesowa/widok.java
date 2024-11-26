@@ -105,35 +105,121 @@ public class widok implements zmianaWidoku {
 		return false  ;
 	}
 	public void wyswietlWidokKlienta() {
-		// TODO - implement widok.wyswietlWidokKlienta
-		throw new UnsupportedOperationException();
+		System.out.println("widok klienta ");
+
+
+
 	}
 
 	public void wyswietlWidokPracownika() {
-		// TODO - implement widok.wyswietlWidokPracownika
-		throw new UnsupportedOperationException();
+		System.out.println("widok pracownika");
+
+		System.out.println("wybierz opcje 1.udzielanie pomocy  technicznej  2.zablokuj konto ");
+
+		String przycisk = "";
+		String[] argumenty = new String[]{};
+		int index = wyborIndexu(1,2); // opcje 1 i 2
+		if(index == -1 ){
+			przycisk = "wyloguj";
+			warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+			return;
+		}
+		if(index == 1 ){
+			przycisk="pomoc";
+			System.out.println("wybierz problem do rozwiązania ");
+			int indexProblemu = wyborIndexu(0,3);//indexy problemów
+			argumenty = new String[]{""+indexProblemu};
+		}
+		else if (index ==2 ){
+			przycisk = "blokada";
+			System.out.println("wybierz konto  do zablokowania ");
+			int indexkonta  = wyborIndexu(0,3);//indexy kont
+			argumenty = new String[]{""+indexkonta};
+			if(!poprosOPotwierdzenie()){
+				return;
+			}
+		}
+
+		warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+
+
 	}
 
+
 	public void wyswietlWidokUslugodawcy() {
-		// TODO - implement widok.wyswietlWidokUslugodawcy
-		throw new UnsupportedOperationException();
+		System.out.println("widok usługodawcy ");
+
+		System.out.println("wyswietlam listę klientów ");
+
+		System.out.println("wybierz opcje 1.dodaj ofertę  2.usun ofertę  ");
+
+		String przycisk = "";
+		String[] argumenty = new String[]{};
+		int index = wyborIndexu(1,2); // opcje 1 i 2
+		if(index == -1 ){
+			przycisk = "wyloguj";
+			warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+			return;
+		}
+		if(index == 1 ){
+			przycisk="dodanieoferty";
+			System.out.println("wprowadz dane oferty  ");
+			argumenty = wprowadzStringi(3,new String[]{"cena","nazwa","opis"});
+
+		}
+		else if (index ==2 ){
+			przycisk = "usunecieoferty";
+			System.out.println("wybierz index oferty do usunięcia ");
+			int indexoferty  = wyborIndexu(0,3);//indexy kont
+			argumenty = new String[]{""+indexoferty};
+		}
+
+		warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+
+
 	}
 
 	@Override
 	public void wyswietlWiadomosc(wiadomosc wiadomosc) {
-//		if(wiadomosc.tresc == null || wiadomosc.kolor == null ){
-//			System.out.println("wiadomosc debug ");
-//			return;
-//		}
 	if(wiadomosc.kolor == null){
 		System.out.println( wiadomosc.tresc);
 		return;
 	}
-
-
 		System.out.println(wiadomosc.kolor + wiadomosc.tresc);
 	}
 
 
+	public int  wyborIndexu(int min , int max ){ // -1 to wyloguj
+
+		while(true){
+			System.out.println("wybierz index od "+min+ " do " + max +" lub " +(max+1) +" aby się wylogowac" );
+
+			int  input =Integer.parseInt( scanner.nextLine());
+			if(input == max+1){
+				return -1;
+			}
+
+			if(input >=min && input <= max ){
+				return  input ;
+			}
+			else {
+				System.out.println("wybrano niepoprawny index ");
+			}
+		}
+	}
+	public String[] wprowadzStringi(int ile,String[] nazwy  ){
+
+		if(nazwy.length != ile){
+			System.out.println("NIE DZIAŁA POPRAWNIE,ZŁE DANE ");
+		}
+		String[] ret = new String[ile];
+
+		for (int i = 0; i <ile ; i++) {
+			System.out.println("podaj"+nazwy[i]);
+			ret[i] = scanner.nextLine();
+		}
+
+		return  ret;
+	}
 
 }

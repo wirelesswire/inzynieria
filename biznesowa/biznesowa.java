@@ -43,16 +43,51 @@ public class biznesowa implements przetwarzanieDanych {
 				wiadomosc x = obslugaLogowania.sprawdz(argumenty[0],argumenty[1],p);
 				if(x.tresc == null ){
 					this.uzytkownik = obslugaLogowania.user;
-
 				}
 				else{
 					widok.wyswietlWiadomosc(x);
 				}
+//				sendBaseView();
+				break;
+			case "dodanieoferty":
+				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś dodanie oferty "));
+				break;
+			case "usunecieoferty":
+				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś usuniecie oferty "));
 
 				break;
+			case "pomoc":
+				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś udzielenie pomocy  "));
+
+				break;
+			case "blokada":
+				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś blokade konta  "));
+
+				break;
+			case "wyloguj":
+				this.uzytkownik = null ;
+				widok.pokazLogowanie();
+				return;
+//				break;
 
 			default:
 				System.out.println("lol");
+		}
+		sendBaseView();
+
+	}
+	public void sendBaseView(){
+		if(this.uzytkownik instanceof pracownik){
+			widok.wyswietlWidokPracownika();
+//					System.out.println("jest pracowanikiem ");
+		}
+		if(this.uzytkownik instanceof uslugodawca){
+			widok.wyswietlWidokUslugodawcy();
+//					System.out.println("jest uslugodawca  ");
+		}
+		if(this.uzytkownik instanceof klient){
+			widok.wyswietlWidokKlienta();
+//					System.out.println("jest klientem ");
 		}
 	}
 	/**
