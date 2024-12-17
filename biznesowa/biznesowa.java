@@ -77,17 +77,43 @@ public class biznesowa implements przetwarzanieDanych {
 
 	}
 	public void sendBaseView(){
+
+		tworcaWidoku tw ;
+
+
 		if(this.uzytkownik instanceof pracownik){
-			widok.wyswietlWidokPracownika();
+			tw = new tworcaPracownika();
 //					System.out.println("jest pracowanikiem ");
 		}
-		if(this.uzytkownik instanceof uslugodawca){
-			widok.wyswietlWidokUslugodawcy();
+		else if(this.uzytkownik instanceof uslugodawca){
+			tw = new tworcaUslugodawcy();
 //					System.out.println("jest uslugodawca  ");
 		}
-		if(this.uzytkownik instanceof klient){
-			widok.wyswietlWidokKlienta();
+		else if(this.uzytkownik instanceof klient){
+			tw = new tworcaKlienta();
 //					System.out.println("jest klientem ");
+		}
+		else {
+			System.out.println("KRYTYCZXNY BŁĄD  ");
+			return;
+		}
+
+		daneDlaUzytkownika  d =  tw.stworzWidok(dane);
+		if(this.uzytkownik instanceof pracownik){
+			widok.wyswietlWidokPracownika(d);
+//					System.out.println("jest pracowanikiem ");
+		}
+		else if(this.uzytkownik instanceof uslugodawca){
+			widok.wyswietlWidokUslugodawcy(d);
+//					System.out.println("jest uslugodawca  ");
+		}
+		else if(this.uzytkownik instanceof klient){
+			widok.wyswietlWidokKlienta(d);
+//					System.out.println("jest klientem ");
+		}
+		else {
+			System.out.println("KRYTYCZXNY BŁĄD  ");
+			return;
 		}
 	}
 	/**

@@ -1,9 +1,14 @@
 package biznesowa;
-
+import  dane.*;
 public abstract class tworcaWidoku {
 
-	public daneDlaUzytkownika stworzWidok() {
-		// TODO - implement tworcaDanych.stworzDane
+
+	/**
+	 * 
+	 * @param dane
+	 */
+	public daneDlaUzytkownika stworzWidok(dane dane) {
+		// TODO - implement tworcaWidoku.stworzWidok
 		throw new UnsupportedOperationException();
 	}
 

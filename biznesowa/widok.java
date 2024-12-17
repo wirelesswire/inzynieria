@@ -2,8 +2,10 @@ package biznesowa;
 
 import widok.*;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
+import dane.*;
 
 public class widok implements zmianaWidoku {
 
@@ -50,17 +52,53 @@ public class widok implements zmianaWidoku {
 //		throw new UnsupportedOperationException();
 	}
 
-	private void wyswietlPomocTechniczna() {
-		// TODO - implement widok.wyswietlPomocTechniczna
-		throw new UnsupportedOperationException();
+	private void wyswietlPomocTechniczna(problem[] problemy) {
+		if (problemy == null || problemy.length == 0) {
+			System.out.println("Brak zgłoszonych problemów.");
+			return;
+		}
+
+		System.out.println("--- Zgłoszenia do Pomocy Technicznej ---");
+
+		// Wariant 1: Proste wyświetlanie z toString()
+		System.out.println("\n--- Wariant 1: toString() ---");
+		Arrays.stream(problemy).forEach(System.out::println);
+
+
+		// Wariant 2: Formatowany wypis
+		System.out.println("\n--- Wariant 2: Formatowany wypis ---");
+		for (int i = 0; i < problemy.length; i++) {
+			problem problem = problemy[i];
+			System.out.println("Zgłoszenie #" + (i + 1) + ":");
+			System.out.println("  Nazwa: " + problem.getNazwa());
+			System.out.println("  Opis: " + problem.getOpis());
+			System.out.println("  Zgłaszający: " + problem.getZglaszajacy());
+			System.out.println("--------------------");
+		}
+
+		// Wariant 3: Tabela (dla bardziej zaawansowanego formatowania można użyć bibliotek zewnętrznych)
+		System.out.println("\n--- Wariant 3: Tabela (uproszczona) ---");
+		System.out.println("Nazwa\t\tOpis\t\tZgłaszający");
+		System.out.println("--------------------------------------------------");
+		for (problem problem : problemy) {
+			System.out.println(problem.getNazwa() + "\t\t" + problem.getOpis().substring(0, Math.min(problem.getOpis().length(), 10)) + "...\t\t" + problem.getZglaszajacy()); // Skracanie opisu dla czytelności tabeli
+		}
 	}
 
-	private void wyswietlBlokowanieKonta() {
+	/**
+	 * 
+	 * @param uzytkownicy
+	 */
+	private void wyswietlBlokowanieKonta(uzytkownik[] uzytkownicy) {
 		// TODO - implement widok.wyswietlBlokowanieKonta
 		throw new UnsupportedOperationException();
 	}
 
-	private void wyswietlPrzegladanieKlientow() {
+	/**
+	 * 
+	 * @param klienci
+	 */
+	private void wyswietlPrzegladanieKlientow(klient[] klienci) {
 		// TODO - implement widok.wyswietlPrzegladanieKlientow
 		throw new UnsupportedOperationException();
 	}
@@ -70,22 +108,38 @@ public class widok implements zmianaWidoku {
 		throw new UnsupportedOperationException();
 	}
 
-	private void wyswietlUsuwanieOferty() {
+	/**
+	 * 
+	 * @param oferty
+	 */
+	private void wyswietlUsuwanieOferty(oferta[] oferty) {
 		// TODO - implement widok.wyswietlUsuwanieOferty
 		throw new UnsupportedOperationException();
 	}
 
-	private void wyswietlAnulowanieUslugi() {
+	/**
+	 * 
+	 * @param uslugi
+	 */
+	private void wyswietlAnulowanieUslugi(usluga[] uslugi) {
 		// TODO - implement widok.wyswietlAnulowanieUslugi
 		throw new UnsupportedOperationException();
 	}
 
-	private void wyswietlZaplacenieZaUsluge() {
+	/**
+	 * 
+	 * @param uslugi
+	 */
+	private void wyswietlZaplacenieZaUsluge(usluga[] uslugi) {
 		// TODO - implement widok.wyswietlZaplacenieZaUsluge
 		throw new UnsupportedOperationException();
 	}
 
-	private void wyswietlPrzegladanieHistoriiUslug() {
+	/**
+	 * 
+	 * @param uslugi
+	 */
+	private void wyswietlPrzegladanieHistoriiUslug(usluga[] uslugi) {
 		// TODO - implement widok.wyswietlPrzegladanieHistoriiUslug
 		throw new UnsupportedOperationException();
 	}
@@ -104,14 +158,22 @@ public class widok implements zmianaWidoku {
 		}
 		return false  ;
 	}
-	public void wyswietlWidokKlienta() {
+	/**
+	 * 
+	 * @param dane
+	 */
+	public void wyswietlWidokKlienta(daneDlaUzytkownika dane) {
 		System.out.println("widok klienta ");
 
 
 
 	}
 
-	public void wyswietlWidokPracownika() {
+	/**
+	 * 
+	 * @param dane
+	 */
+	public void wyswietlWidokPracownika(daneDlaUzytkownika dane) {
 		System.out.println("widok pracownika");
 
 		System.out.println("wybierz opcje 1.udzielanie pomocy  technicznej  2.zablokuj konto ");
@@ -146,7 +208,19 @@ public class widok implements zmianaWidoku {
 	}
 
 
-	public void wyswietlWidokUslugodawcy() {
+	/**
+	 * 
+	 * @param dane
+	 */
+	public void wyswietlWidokUslugodawcy(daneDlaUzytkownika dane) {
+
+		if(!(dane instanceof daneDlaUzytkownika)){
+			System.out.println("B�?AD BOŻY");
+
+			return ;
+		}
+
+
 		System.out.println("widok usługodawcy ");
 
 		System.out.println("wyswietlam listę klientów ");
@@ -210,7 +284,7 @@ public class widok implements zmianaWidoku {
 	public String[] wprowadzStringi(int ile,String[] nazwy  ){
 
 		if(nazwy.length != ile){
-			System.out.println("NIE DZIAŁA POPRAWNIE,ZŁE DANE ");
+			System.out.println("NIE DZIA�?A POPRAWNIE,Z�?E DANE ");
 		}
 		String[] ret = new String[ile];
 
@@ -221,5 +295,7 @@ public class widok implements zmianaWidoku {
 
 		return  ret;
 	}
+
+
 
 }
