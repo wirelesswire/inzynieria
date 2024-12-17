@@ -6,6 +6,7 @@ public class dane implements dostepDoDanych {
 
 	private baza baza;
 
+	public dane(){}
 	public uzytkownik[] zwrocUzytkownikow() {
 		return  baza.uzytkownicy;
 	}

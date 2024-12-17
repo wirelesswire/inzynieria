@@ -15,12 +15,10 @@ public  class Start {
 
         widok.warstwaBiznesowa = biznesowa;
 
-        dane dane = new dane();
+        dane dane= new dane();
         baza b = createBaza();
         dane.ustawBaze(b);
         biznesowa.dane = dane;
-
-
 
         widok.pokazLogowanie();
 
