@@ -1,10 +1,21 @@
 package biznesowa;
-
+import  dane.*;
 public class tworcaKlienta extends tworcaWidoku {
 
-	public daneDlaKlienta stworzDane() {
-		// TODO - implement tworcaKlienta.stworzDane
-		throw new UnsupportedOperationException();
-	}
+
+
+	/**
+	 * 
+	 * @param dane
+	 */
+	public daneDlaKlienta stworzDane(dane dane) {
+
+		daneDlaKlienta d = new daneDlaKlienta();
+		d.oferty = dane.zwrocOferty();
+
+
+		return d ;
+
+		}
 
 }
