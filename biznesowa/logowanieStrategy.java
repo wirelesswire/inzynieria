@@ -11,15 +11,20 @@ public class logowanieStrategy implements Strategia {
 		this.daneBaza = daneBaza;
 	}
 
+	/**
+	 * 
+	 * @param dane
+	 * @param uzytkownik
+	 */
 	@Override
-	public pozyskaneDane przetworzDane(uzytkownik uzytkownik) {
+	public pozyskaneDane przetworzDane(dane dane, uzytkownik uzytkownik) {
 		// Tworzymy obiekt pozyskanych danych
-		pozyskaneDane dane = new pozyskaneDane();
+		pozyskaneDane pozyskaneDane = new pozyskaneDane();
 
 		// Pobieramy wszystkich użytkowników z bazy danych za pomocą klasy dane
-		dane.uzytkownicy = daneBaza.zwrocUzytkownikow();
+		pozyskaneDane.uzytkownicy = daneBaza.zwrocUzytkownikow();
 
 		// Zwracamy obiekt z pozyskanymi danymi
-		return dane;
+		return pozyskaneDane;
 	}
 }

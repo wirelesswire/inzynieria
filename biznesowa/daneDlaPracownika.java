@@ -1,7 +1,10 @@
 package biznesowa;
 
+import dane.*;
+
 public class daneDlaPracownika extends daneDlaUzytkownika {
 
-	public int[] uzytkownicy;
+	public uzytkownik[] uzytkownicy;
+	public problem[] problemy;
 
 }

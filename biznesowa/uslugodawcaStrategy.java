@@ -4,8 +4,13 @@ import dane.*;
 
 public class uslugodawcaStrategy implements Strategia {
 
+	/**
+	 * 
+	 * @param dane
+	 * @param uzytkownik
+	 */
 	@Override
-	public pozyskaneDane przetworzDane(uzytkownik uzytkownik) {
+	public pozyskaneDane przetworzDane(dane dane, uzytkownik uzytkownik) {
 		if (!(uzytkownik instanceof uslugodawca)) {
 			throw new IllegalArgumentException("Podany użytkownik nie jest usługodawcą.");
 		}

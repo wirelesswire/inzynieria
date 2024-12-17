@@ -6,7 +6,7 @@ import widok.*;
 public class biznesowa implements przetwarzanieDanych {
 
 	private uzytkownik uzytkownik;
-	private edytorBazy edytorbazy;
+	public  edytorBazy edytorbazy;
 	private pozyskiwaczDanych pozyskiwacz;
 	public widok widok;
 	private pozyskaneDane daneUzytkownika;
@@ -14,7 +14,7 @@ public class biznesowa implements przetwarzanieDanych {
 	public dane dane;
 
 	/**
-	 * 
+	 *
 	 * @param login
 	 * @param haslo
 	 */
@@ -29,18 +29,18 @@ public class biznesowa implements przetwarzanieDanych {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param przycisk
 	 * @param argumenty
 	 */
 	public void kliknietyPrzycisk(String przycisk, String[] argumenty) {
 		switch (przycisk){
 			case "zaloguj":
-				pozyskiwaczDanych p = new pozyskiwaczDanych(null); // null tylko tutaj w reszcie zapewne błąd
+				pozyskiwacz  = new pozyskiwaczDanych(null); // null tylko tutaj w reszcie zapewne błąd
 				Strategia s = new logowanieStrategy(this.dane);
-				p.setStrategia(s);
-				p.pozyskajDane();
-				wiadomosc x = obslugaLogowania.sprawdz(argumenty[0],argumenty[1],p);
+				pozyskiwacz.setStrategia(s);
+				pozyskiwacz.pozyskajDane();
+				wiadomosc x = obslugaLogowania.sprawdz(argumenty[0],argumenty[1],pozyskiwacz);
 				if(x.tresc == null ){
 					this.uzytkownik = obslugaLogowania.user;
 				}
@@ -58,10 +58,17 @@ public class biznesowa implements przetwarzanieDanych {
 				break;
 			case "pomoc":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś udzielenie pomocy  "));
+				pracownikStrategy p = new pracownikStrategy();
+				pozyskiwacz.setStrategia(p);
+
+				edytorbazy.pomozTechnicznie(Integer.parseInt( argumenty[0]));
+
+//				pozyskaneDane pd = pozyskiwacz.pozyskajDane();
 
 				break;
 			case "blokada":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś blokade konta  "));
+
 
 				break;
 			case "wyloguj":
@@ -73,46 +80,37 @@ public class biznesowa implements przetwarzanieDanych {
 			default:
 				System.out.println("lol");
 		}
+
+
+
 		sendBaseView();
 
 	}
 	public void sendBaseView(){
 
-		tworcaWidoku tw ;
+		tworcaWidoku tw = new tworcaWidoku();
 
 
-		if(this.uzytkownik instanceof pracownik){
-			tw = new tworcaPracownika();
+
+
+		daneDlaUzytkownika  d =tw.stworzWidok(dane,uzytkownik);
+
+
+		if(this.uzytkownik instanceof pracownik ){
+//			daneDlaPracownika d =  tw.stworzWidok(dane );
+			widok.wyswietlWidokPracownika((daneDlaPracownika)d);
 //					System.out.println("jest pracowanikiem ");
 		}
 		else if(this.uzytkownik instanceof uslugodawca){
-			tw = new tworcaUslugodawcy();
+			widok.wyswietlWidokUslugodawcy((daneDlaUslugodawcy) d);
 //					System.out.println("jest uslugodawca  ");
 		}
 		else if(this.uzytkownik instanceof klient){
-			tw = new tworcaKlienta();
+			widok.wyswietlWidokKlienta((daneDlaKlienta) d);
 //					System.out.println("jest klientem ");
 		}
 		else {
-			System.out.println("KRYTYCZXNY BŁĄD  ");
-			return;
-		}
-
-		daneDlaUzytkownika  d =  tw.stworzWidok(dane);
-		if(this.uzytkownik instanceof pracownik){
-			widok.wyswietlWidokPracownika(d);
-//					System.out.println("jest pracowanikiem ");
-		}
-		else if(this.uzytkownik instanceof uslugodawca){
-			widok.wyswietlWidokUslugodawcy(d);
-//					System.out.println("jest uslugodawca  ");
-		}
-		else if(this.uzytkownik instanceof klient){
-			widok.wyswietlWidokKlienta(d);
-//					System.out.println("jest klientem ");
-		}
-		else {
-			System.out.println("KRYTYCZXNY BŁĄD  ");
+			System.out.println("KRYTYCZXNY B�?ĄD  ");
 			return;
 		}
 	}
@@ -123,8 +121,9 @@ public class biznesowa implements przetwarzanieDanych {
 	 */
 	public biznesowa(edytorBazy edytor, widok widok) {
 		this.edytorbazy = edytor;
-		this.pozyskiwacz = pozyskiwacz;
+//		this.pozyskiwacz = pozyskiwacz;
 		this.widok = widok;
+
 		czyIstnieje czy1 = new czyIstnieje();
 		czyHasloSieZgadza czy2 = new czyHasloSieZgadza();
 		czyJestAktywny czy3 = new czyJestAktywny();

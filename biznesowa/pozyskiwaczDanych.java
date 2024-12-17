@@ -26,7 +26,7 @@ public class pozyskiwaczDanych {
 		if (strategia == null) {
 			throw new IllegalStateException("Strategia nie została ustawiona.");
 		}
-		this.pozyskaneDane = strategia.przetworzDane(uzytkownik);
+		this.pozyskaneDane = strategia.przetworzDane(dane , uzytkownik);
 		return this.pozyskaneDane;
 	}
 

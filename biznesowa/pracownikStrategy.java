@@ -4,8 +4,13 @@ import dane.*;
 
 public class pracownikStrategy implements Strategia {
 
+	/**
+	 * 
+	 * @param dane
+	 * @param uzytkownik
+	 */
 	@Override
-	public pozyskaneDane przetworzDane(uzytkownik uzytkownik) {
+	public pozyskaneDane przetworzDane(dane dane, uzytkownik uzytkownik) {
 		if (!(uzytkownik instanceof pracownik)) {
 			throw new IllegalArgumentException("Podany użytkownik nie jest pracownikiem.");
 		}
@@ -14,9 +19,9 @@ public class pracownikStrategy implements Strategia {
 		pozyskaneDane pozyskaneDane = new pozyskaneDane();
 
 		// Wypełnianie danych specyficznych dla pracownika
-		pozyskaneDane.pracownicy = new pracownik[] {prac};
-		pozyskaneDane.uzytkownicy = new uzytkownik[] {prac};
-
+		pozyskaneDane.pracownicy = dane.zwrocPracownikow();
+		pozyskaneDane.uzytkownicy = dane.zwrocUzytkownikow();
+		pozyskaneDane.problemy = dane.zwrocProblemy();
 		return pozyskaneDane;
 	}
 }

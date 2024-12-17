@@ -16,6 +16,15 @@ public class uzytkownik {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "uzytkownik{" +
+				"imie='" + imie + '\'' +
+				", nazwisko='" + nazwisko + '\'' +
+				", status='" + status + '\'' +
+				'}';
+	}
+
 	// Gettery i settery
 	public String getImie() {
 		return imie;

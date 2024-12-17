@@ -2,8 +2,6 @@ package biznesowa;
 import  dane.*;
 public class tworcaKlienta extends tworcaWidoku {
 
-
-
 	/**
 	 * 
 	 * @param dane

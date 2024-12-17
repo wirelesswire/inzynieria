@@ -8,9 +8,10 @@ public class klientStrategy implements Strategia {
 
 	/**
 	 * 
+	 * @param dane
 	 * @param uzytkownik
 	 */
-	public pozyskaneDane przetworzDane(uzytkownik uzytkownik) {
+	public pozyskaneDane przetworzDane(dane dane, uzytkownik uzytkownik) {
 	return  null ;
 	}
 

@@ -59,10 +59,10 @@ public class widok implements zmianaWidoku {
 		}
 
 		System.out.println("--- Zgłoszenia do Pomocy Technicznej ---");
-
-		// Wariant 1: Proste wyświetlanie z toString()
-		System.out.println("\n--- Wariant 1: toString() ---");
-		Arrays.stream(problemy).forEach(System.out::println);
+//
+//		// Wariant 1: Proste wyświetlanie z toString()
+//		System.out.println("\n--- Wariant 1: toString() ---");
+//		Arrays.stream(problemy).forEach(System.out::println);
 
 
 		// Wariant 2: Formatowany wypis
@@ -72,17 +72,18 @@ public class widok implements zmianaWidoku {
 			System.out.println("Zgłoszenie #" + (i + 1) + ":");
 			System.out.println("  Nazwa: " + problem.getNazwa());
 			System.out.println("  Opis: " + problem.getOpis());
-			System.out.println("  Zgłaszający: " + problem.getZglaszajacy());
+
+			System.out.println("  Zgłaszający: " + problem.getZglaszajacy().toString());
 			System.out.println("--------------------");
 		}
 
-		// Wariant 3: Tabela (dla bardziej zaawansowanego formatowania można użyć bibliotek zewnętrznych)
-		System.out.println("\n--- Wariant 3: Tabela (uproszczona) ---");
-		System.out.println("Nazwa\t\tOpis\t\tZgłaszający");
-		System.out.println("--------------------------------------------------");
-		for (problem problem : problemy) {
-			System.out.println(problem.getNazwa() + "\t\t" + problem.getOpis().substring(0, Math.min(problem.getOpis().length(), 10)) + "...\t\t" + problem.getZglaszajacy()); // Skracanie opisu dla czytelności tabeli
-		}
+//		// Wariant 3: Tabela (dla bardziej zaawansowanego formatowania można użyć bibliotek zewnętrznych)
+//		System.out.println("\n--- Wariant 3: Tabela (uproszczona) ---");
+//		System.out.println("Nazwa\t\tOpis\t\tZgłaszający");
+//		System.out.println("--------------------------------------------------");
+//		for (problem problem : problemy) {
+//			System.out.println(problem.getNazwa() + "\t\t" + problem.getOpis().substring(0, Math.min(problem.getOpis().length(), 10)) + "...\t\t" + problem.getZglaszajacy()); // Skracanie opisu dla czytelności tabeli
+//		}
 	}
 
 	/**
@@ -162,7 +163,7 @@ public class widok implements zmianaWidoku {
 	 * 
 	 * @param dane
 	 */
-	public void wyswietlWidokKlienta(daneDlaUzytkownika dane) {
+	public void wyswietlWidokKlienta(daneDlaKlienta dane) {
 		System.out.println("widok klienta ");
 
 
@@ -173,7 +174,7 @@ public class widok implements zmianaWidoku {
 	 * 
 	 * @param dane
 	 */
-	public void wyswietlWidokPracownika(daneDlaUzytkownika dane) {
+	public void wyswietlWidokPracownika(daneDlaPracownika dane) {
 		System.out.println("widok pracownika");
 
 		System.out.println("wybierz opcje 1.udzielanie pomocy  technicznej  2.zablokuj konto ");
@@ -188,14 +189,16 @@ public class widok implements zmianaWidoku {
 		}
 		if(index == 1 ){
 			przycisk="pomoc";
+			wyswietlPomocTechniczna(dane.problemy);
+
 			System.out.println("wybierz problem do rozwiązania ");
-			int indexProblemu = wyborIndexu(0,3);//indexy problemów
+			int indexProblemu = wyborIndexu(1,dane.problemy.length)-1;//indexy problemów
 			argumenty = new String[]{""+indexProblemu};
 		}
 		else if (index ==2 ){
 			przycisk = "blokada";
 			System.out.println("wybierz konto  do zablokowania ");
-			int indexkonta  = wyborIndexu(0,3);//indexy kont
+			int indexkonta  = wyborIndexu(1,3);//indexy kont
 			argumenty = new String[]{""+indexkonta};
 			if(!poprosOPotwierdzenie()){
 				return;
@@ -212,10 +215,10 @@ public class widok implements zmianaWidoku {
 	 * 
 	 * @param dane
 	 */
-	public void wyswietlWidokUslugodawcy(daneDlaUzytkownika dane) {
+	public void wyswietlWidokUslugodawcy(daneDlaUslugodawcy dane) {
 
 		if(!(dane instanceof daneDlaUzytkownika)){
-			System.out.println("B�?AD BOŻY");
+			System.out.println("BŁĄAD BOŻY");
 
 			return ;
 		}
@@ -284,7 +287,7 @@ public class widok implements zmianaWidoku {
 	public String[] wprowadzStringi(int ile,String[] nazwy  ){
 
 		if(nazwy.length != ile){
-			System.out.println("NIE DZIA�?A POPRAWNIE,Z�?E DANE ");
+			System.out.println("NIE DZIAŁA POPRAWNIE,ZŁE DANE ");
 		}
 		String[] ret = new String[ile];
 
@@ -295,6 +298,7 @@ public class widok implements zmianaWidoku {
 
 		return  ret;
 	}
+
 
 
 

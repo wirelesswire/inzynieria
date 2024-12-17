@@ -14,4 +14,6 @@ public class tworcaUslugodawcy extends tworcaWidoku {
 		throw new UnsupportedOperationException();
 	}
 
+
+
 }
