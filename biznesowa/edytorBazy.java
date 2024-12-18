@@ -26,9 +26,15 @@ public class edytorBazy {
 //		throw new UnsupportedOperationException();
 	}
 
-	public void zablokujKonto() {
-		// TODO - implement edytorBazy.zablokujKonto
-		throw new UnsupportedOperationException();
+	public void zablokujKonto(int index)
+	{
+		uzytkownik[] uzytkownicy = dane.zwrocUzytkownikow();
+		uzytkownicy[index].setStatus("zablokowany");
+
+		baza b = dane.zwrocBaze();
+		b.uzytkownicy = uzytkownicy;
+		dane.ustawBaze(b);
+
 	}
 
 	public void dodajOferte() {

@@ -22,12 +22,6 @@ public  class Start {
         biznesowa.edytorbazy.dane=dane;
         widok.pokazLogowanie();
 
-
-
-
-
-
-
     }
 
     public static baza  createBaza(){

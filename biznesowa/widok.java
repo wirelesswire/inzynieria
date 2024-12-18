@@ -30,7 +30,7 @@ public class widok implements zmianaWidoku {
 		zlecSprawdzenieDanych(login,haslo);
 	}
 	/**
-	 * 
+	 *
 	 * @param login
 	 * @param haslo
 	 */
@@ -41,7 +41,7 @@ public class widok implements zmianaWidoku {
 //		throw new UnsupportedOperationException();
 	}
 	/**
-	 * 
+	 *
 	 * @param dane
 	 */
 	private void wynikLogowania(daneDlaUzytkownika dane) {
@@ -87,7 +87,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param uzytkownicy
 	 */
 	private void wyswietlBlokowanieKonta(uzytkownik[] uzytkownicy) {
@@ -96,7 +96,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param klienci
 	 */
 	private void wyswietlPrzegladanieKlientow(klient[] klienci) {
@@ -110,7 +110,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param oferty
 	 */
 	private void wyswietlUsuwanieOferty(oferta[] oferty) {
@@ -119,7 +119,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param uslugi
 	 */
 	private void wyswietlAnulowanieUslugi(usluga[] uslugi) {
@@ -128,7 +128,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param uslugi
 	 */
 	private void wyswietlZaplacenieZaUsluge(usluga[] uslugi) {
@@ -137,7 +137,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param uslugi
 	 */
 	private void wyswietlPrzegladanieHistoriiUslug(usluga[] uslugi) {
@@ -160,7 +160,7 @@ public class widok implements zmianaWidoku {
 		return false  ;
 	}
 	/**
-	 * 
+	 *
 	 * @param dane
 	 */
 	public void wyswietlWidokKlienta(daneDlaKlienta dane) {
@@ -171,7 +171,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param dane
 	 */
 	public void wyswietlWidokPracownika(daneDlaPracownika dane) {
@@ -195,19 +195,20 @@ public class widok implements zmianaWidoku {
 			int indexProblemu = wyborIndexu(1,dane.problemy.length)-1;//indexy problemów
 			argumenty = new String[]{""+indexProblemu};
 		}
-		else if (index ==2 ){
+		else if (index == 2) {
 			przycisk = "blokada";
-			System.out.println("wybierz konto  do zablokowania ");
-			int indexkonta  = wyborIndexu(1,3);//indexy kont
-			argumenty = new String[]{""+indexkonta};
-			if(!poprosOPotwierdzenie()){
+			wyswietlBlokowanieKonta(dane.uzytkownicy);
+
+			System.out.println("Wybierz konto do zablokowania:");
+			int indexKonta = wyborIndexu(1,dane.uzytkownicy.length)-1;//indexy kont
+
+			if (!poprosOPotwierdzenie()) {
 				return;
 			}
+
+			argumenty = new String[]{""+indexKonta};
 		}
-
 		warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
-
-
 	}
 
 

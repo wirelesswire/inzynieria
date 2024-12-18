@@ -69,6 +69,8 @@ public class biznesowa implements przetwarzanieDanych {
 			case "blokada":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś blokade konta  "));
 
+				edytorbazy.zablokujKonto(Integer.parseInt( argumenty[0]));
+
 
 				break;
 			case "wyloguj":
