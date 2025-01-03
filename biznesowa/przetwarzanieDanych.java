@@ -2,12 +2,6 @@ package biznesowa;
 
 public interface przetwarzanieDanych {
 
-	/**
-	 * 
-	 * @param login
-	 * @param haslo
-	 */
-	daneDlaUzytkownika zaloguj(String login, String haslo);
 
 	/**
 	 * 

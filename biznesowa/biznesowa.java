@@ -2,7 +2,7 @@ package biznesowa;
 
 import dane.*;
 import widok.*;
-
+//import daneDlaUzytkownika;
 public class biznesowa implements przetwarzanieDanych {
 
 	private uzytkownik uzytkownik;
@@ -14,13 +14,30 @@ public class biznesowa implements przetwarzanieDanych {
 	public dane dane;
 
 	/**
-	 *
+	 * 
 	 * @param login
 	 * @param haslo
 	 */
-	public daneDlaUzytkownika zaloguj(String login, String haslo) {
-		// TODO - implement biznesowa.zaloguj
-		throw new UnsupportedOperationException();
+	public boolean zaloguj(String login, String haslo) {
+
+		pozyskiwacz  = new pozyskiwaczDanych(null); // null tylko tutaj w reszcie zapewne błąd
+		Strategia s = new logowanieStrategy(this.dane);
+		pozyskiwacz.setStrategia(s);
+		pozyskaneDane d =  pozyskiwacz.pozyskajDane();
+		wiadomosc x = obslugaLogowania.sprawdz(login , haslo ,pozyskiwacz);// ?a?cuch daje r�?ne wiadomo?ci
+
+		if(x.tresc == null ){
+			this.uzytkownik = obslugaLogowania.user;
+//					pozyskaneDane  d = pozyskajDane();
+			return  true ;
+		}
+		else{
+			widok.wyswietlWiadomosc(x);
+		}
+		return  false ;
+
+//		throw new UnsupportedOperationException();
+
 	}
 
 	private daneDlaUzytkownika stworzDane() {
@@ -36,34 +53,27 @@ public class biznesowa implements przetwarzanieDanych {
 	public void kliknietyPrzycisk(String przycisk, String[] argumenty) {
 		switch (przycisk){
 			case "zaloguj":
-				pozyskiwacz  = new pozyskiwaczDanych(null); // null tylko tutaj w reszcie zapewne błąd
-				Strategia s = new logowanieStrategy(this.dane);
-				pozyskiwacz.setStrategia(s);
-				pozyskiwacz.pozyskajDane();
-				wiadomosc x = obslugaLogowania.sprawdz(argumenty[0],argumenty[1],pozyskiwacz);
-				if(x.tresc == null ){
-					this.uzytkownik = obslugaLogowania.user;
+				boolean logowanieUdane = zaloguj(argumenty[0],argumenty[1]);
+				if( ! logowanieUdane){
+					break;
 				}
-				else{
-					widok.wyswietlWiadomosc(x);
-				}
-//				sendBaseView();
+
+				pozyskiwacz  = new pozyskiwaczDanych(this.uzytkownik);
+
+
+
 				break;
 			case "dodanieoferty":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś dodanie oferty "));
 				break;
 			case "usunecieoferty":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś usuniecie oferty "));
-
 				break;
 			case "pomoc":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś udzielenie pomocy  "));
 				pracownikStrategy p = new pracownikStrategy();
 				pozyskiwacz.setStrategia(p);
-
 				edytorbazy.pomozTechnicznie(Integer.parseInt( argumenty[0]));
-
-//				pozyskaneDane pd = pozyskiwacz.pozyskajDane();
 
 				break;
 			case "blokada":
@@ -83,39 +93,46 @@ public class biznesowa implements przetwarzanieDanych {
 				System.out.println("lol");
 		}
 
-
-
 		sendBaseView();
 
 	}
+
+
+
 	public void sendBaseView(){
 
-		tworcaWidoku tw = new tworcaWidoku();
-
-
-
-
-		daneDlaUzytkownika  d =tw.stworzWidok(dane,uzytkownik);
-
+		pozyskaneDane pDane = pozyskajDane();
+		daneDlaUzytkownika d = stworzWidok(pDane,uzytkownik);
 
 		if(this.uzytkownik instanceof pracownik ){
-//			daneDlaPracownika d =  tw.stworzWidok(dane );
 			widok.wyswietlWidokPracownika((daneDlaPracownika)d);
-//					System.out.println("jest pracowanikiem ");
 		}
 		else if(this.uzytkownik instanceof uslugodawca){
 			widok.wyswietlWidokUslugodawcy((daneDlaUslugodawcy) d);
-//					System.out.println("jest uslugodawca  ");
 		}
 		else if(this.uzytkownik instanceof klient){
 			widok.wyswietlWidokKlienta((daneDlaKlienta) d);
-//					System.out.println("jest klientem ");
 		}
 		else {
-			System.out.println("KRYTYCZXNY B�?ĄD  ");
-			return;
+			widok.pokazLogowanie();
+//			System.out.println("KRYTYCZXNY B�?ĄD  ");
 		}
 	}
+
+
+
+	/**
+	 * 
+	 * @param pozyskaneDane
+	 * @param uzytkownik
+	 */
+	public daneDlaUzytkownika stworzWidok(pozyskaneDane pozyskaneDane, uzytkownik uzytkownik) {
+
+		tworcaWidoku tw = new tworcaWidoku();
+		daneDlaUzytkownika  d =tw.stworzWidok(pozyskaneDane,uzytkownik);
+		return  d ;
+	}
+
 	/**
 	 * 
 	 * @param edytor
@@ -136,5 +153,11 @@ public class biznesowa implements przetwarzanieDanych {
 		this.obslugaLogowania = czy1;
 
 	}
+
+	public pozyskaneDane pozyskajDane() {
+		return   pozyskiwacz.pozyskajDane();
+	}
+
+
 
 }

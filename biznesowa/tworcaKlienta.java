@@ -4,16 +4,12 @@ public class tworcaKlienta extends tworcaWidoku {
 
 	/**
 	 * 
-	 * @param dane
+	 * @param pozyskaneDane
 	 */
-	public daneDlaKlienta stworzDane(dane dane) {
-
+	public daneDlaKlienta stworzDane(pozyskaneDane pozyskaneDane) {
 		daneDlaKlienta d = new daneDlaKlienta();
-		d.oferty = dane.zwrocOferty();
-
-
+		d.oferty = pozyskaneDane.oferty;
 		return d ;
-
-		}
+	}
 
 }

@@ -4,13 +4,21 @@ import  dane.*;
 
 public class tworcaUslugodawcy extends tworcaWidoku {
 
+//
+//	/**
+//	 *
+//	 * @param dane
+//	 */
+//	public daneDlaUslugodawcy stworzDane(dane dane) {
+////		// TODO - implement tworcaUslugodawcy.stworzDane
+////		throw new UnsupportedOperationException();
+//	}
 
 	/**
 	 * 
-	 * @param dane
+	 * @param pozyskaneDane
 	 */
-	public daneDlaUslugodawcy stworzDane(dane dane) {
-		// TODO - implement tworcaUslugodawcy.stworzDane
+	public daneDlaUslugodawcy stworzDane(pozyskaneDane pozyskaneDane) {
 		throw new UnsupportedOperationException();
 	}
 

@@ -21,7 +21,7 @@ public class uslugodawcaStrategy implements Strategia {
 		// Wypełnianie danych specyficznych dla usługodawcy
 		pozyskaneDane.uslugodawcy = new uslugodawca[] {uslugodawca};
 		pozyskaneDane.uzytkownicy = new uzytkownik[] {uslugodawca};
-		pozyskaneDane.ofery = uslugodawca.getDostepneOferty();
+		pozyskaneDane.oferty = uslugodawca.getDostepneOferty();
 
 		return pozyskaneDane;
 	}

@@ -18,6 +18,7 @@ public class widok implements zmianaWidoku {
 	}
 
 	public void pokazLogowanie() {
+
 		System.out.println("podaj login i hasło ");
 		System.out.println("login :  ");
 
@@ -223,8 +224,6 @@ public class widok implements zmianaWidoku {
 
 			return ;
 		}
-
-
 		System.out.println("widok usługodawcy ");
 
 		System.out.println("wyswietlam listę klientów ");

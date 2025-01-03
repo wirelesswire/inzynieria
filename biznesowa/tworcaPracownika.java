@@ -5,14 +5,16 @@ public class tworcaPracownika extends tworcaWidoku {
 
 
 
+
+
 	/**
 	 * 
-	 * @param dane
+	 * @param pozyskaneDane
 	 */
-	public daneDlaPracownika stworzDane(dane dane) {
+	public daneDlaPracownika stworzDane(pozyskaneDane pozyskaneDane) {
 		daneDlaPracownika d =  new daneDlaPracownika();
-		d.problemy = dane.zwrocProblemy();
-		d.uzytkownicy = dane.zwrocUzytkownikow();
+		d.problemy = pozyskaneDane.problemy;
+		d.uzytkownicy = pozyskaneDane.uzytkownicy;
 		return d ;
 	}
 

@@ -8,6 +8,6 @@ public class pozyskaneDane {
 	public pracownik[] pracownicy;
 	public klient[] klienci;
 	public uslugodawca[] uslugodawcy;
-	public oferta[] ofery;
+	public oferta[] oferty;
 	public problem[] problemy;
 }
