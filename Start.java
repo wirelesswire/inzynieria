@@ -19,7 +19,7 @@ public  class Start {
         baza b = createBaza();
         dane.ustawBaze(b);
         biznesowa.dane = dane;
-        biznesowa.edytorbazy.dane=dane;
+        biznesowa.edytorbazy.dane = dane;
         widok.pokazLogowanie();
 
     }

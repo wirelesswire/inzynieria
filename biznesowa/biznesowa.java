@@ -57,11 +57,20 @@ public class biznesowa implements przetwarzanieDanych {
 				if( ! logowanieUdane){
 					break;
 				}
-
 				pozyskiwacz  = new pozyskiwaczDanych(this.uzytkownik);
-
-
-
+				Strategia s ;
+				if(this.uzytkownik instanceof pracownik ){
+					s = new pracownikStrategy();
+				}
+				else if(this.uzytkownik instanceof uslugodawca){
+					s = new uslugodawcaStrategy();
+				}
+				else if(this.uzytkownik instanceof klient){
+					s = new klientStrategy();
+				}
+				else{
+					System.out.println("B??DDD");
+				}
 				break;
 			case "dodanieoferty":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś dodanie oferty "));
@@ -71,35 +80,26 @@ public class biznesowa implements przetwarzanieDanych {
 				break;
 			case "pomoc":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś udzielenie pomocy  "));
-				pracownikStrategy p = new pracownikStrategy();
-				pozyskiwacz.setStrategia(p);
+//				pracownikStrategy p = new pracownikStrategy();
+//				pozyskiwacz.setStrategia(p);
 				edytorbazy.pomozTechnicznie(Integer.parseInt( argumenty[0]));
 
 				break;
 			case "blokada":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś blokade konta  "));
-
 				edytorbazy.zablokujKonto(Integer.parseInt( argumenty[0]));
-
-
 				break;
 			case "wyloguj":
 				this.uzytkownik = null ;
 				widok.pokazLogowanie();
 				return;
-//				break;
-
 			default:
 				System.out.println("lol");
 		}
-
-		sendBaseView();
+		wyswietlWidok();
 
 	}
-
-
-
-	public void sendBaseView(){
+	public void wyswietlWidok(){
 
 		pozyskaneDane pDane = pozyskajDane();
 		daneDlaUzytkownika d = stworzWidok(pDane,uzytkownik);
@@ -115,7 +115,6 @@ public class biznesowa implements przetwarzanieDanych {
 		}
 		else {
 			widok.pokazLogowanie();
-//			System.out.println("KRYTYCZXNY B�?ĄD  ");
 		}
 	}
 
