@@ -58,7 +58,8 @@ public class biznesowa implements przetwarzanieDanych {
 					break;
 				}
 				pozyskiwacz  = new pozyskiwaczDanych(this.uzytkownik);
-				Strategia s ;
+				pozyskiwacz.dane= dane ;
+				Strategia s = null ;
 				if(this.uzytkownik instanceof pracownik ){
 					s = new pracownikStrategy();
 				}
@@ -71,11 +72,17 @@ public class biznesowa implements przetwarzanieDanych {
 				else{
 					System.out.println("B??DDD");
 				}
+				if(s != null){
+					pozyskiwacz.setStrategia(s);
+
+				}
 				break;
 			case "dodanieoferty":
+				edytorbazy.dodajOferte(argumenty, uzytkownik);
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś dodanie oferty "));
 				break;
 			case "usunecieoferty":
+				edytorbazy.usunOferte(argumenty,uzytkownik);
 				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś usuniecie oferty "));
 				break;
 			case "pomoc":

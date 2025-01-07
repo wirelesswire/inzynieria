@@ -19,7 +19,12 @@ public class tworcaUslugodawcy extends tworcaWidoku {
 	 * @param pozyskaneDane
 	 */
 	public daneDlaUslugodawcy stworzDane(pozyskaneDane pozyskaneDane) {
-		throw new UnsupportedOperationException();
+		daneDlaUslugodawcy d = new daneDlaUslugodawcy();
+		d.uzytkownicy = pozyskaneDane.uzytkownicy;
+		d.oferty = pozyskaneDane.oferty;
+
+		return d ;
+//		throw new UnsupportedOperationException();
 	}
 
 

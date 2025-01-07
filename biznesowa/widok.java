@@ -60,13 +60,7 @@ public class widok implements zmianaWidoku {
 		}
 
 		System.out.println("--- Zgłoszenia do Pomocy Technicznej ---");
-//
-//		// Wariant 1: Proste wyświetlanie z toString()
-//		System.out.println("\n--- Wariant 1: toString() ---");
-//		Arrays.stream(problemy).forEach(System.out::println);
 
-
-		// Wariant 2: Formatowany wypis
 		System.out.println("\n--- Wariant 2: Formatowany wypis ---");
 		for (int i = 0; i < problemy.length; i++) {
 			problem problem = problemy[i];
@@ -86,14 +80,25 @@ public class widok implements zmianaWidoku {
 //			System.out.println(problem.getNazwa() + "\t\t" + problem.getOpis().substring(0, Math.min(problem.getOpis().length(), 10)) + "...\t\t" + problem.getZglaszajacy()); // Skracanie opisu dla czytelności tabeli
 //		}
 	}
-
 	/**
 	 *
 	 * @param uzytkownicy
 	 */
 	private void wyswietlBlokowanieKonta(uzytkownik[] uzytkownicy) {
+		for (int i = 0; i < uzytkownicy.length; i++) {
+			uzytkownik u = uzytkownicy[i];
+			System.out.println("Uzytkownik #" + (i + 1) + ":");
+			System.out.println("  imię: " + u.getImie());
+			System.out.println("  Nazwisko: " + u.getNazwisko());
+
+			System.out.println("  Opis: " + u.getStatus());
+
+			System.out.println("--------------------");
+		}
+
+		System.out.println("jeszcze nie ma ale nie chce to exception na razie ");
 		// TODO - implement widok.wyswietlBlokowanieKonta
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -115,8 +120,22 @@ public class widok implements zmianaWidoku {
 	 * @param oferty
 	 */
 	private void wyswietlUsuwanieOferty(oferta[] oferty) {
+		for (int i = 0; i < oferty.length; i++) {
+			oferta o = oferty[i];
+			System.out.println("usluga #" + (i + 1) + ":");
+			System.out.println("  uslugodawca" + o.getDostawca().getImie() + o.getDostawca().getNazwisko());
+			System.out.println("  nazwa: " + o.getNazwa());
+
+			System.out.println("  Opis: " + o.getOpis());
+
+			System.out.println("  cena: " + o.getCena());
+
+			System.out.println("--------------------");
+		}
+
+
 		// TODO - implement widok.wyswietlUsuwanieOferty
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -193,8 +212,14 @@ public class widok implements zmianaWidoku {
 			wyswietlPomocTechniczna(dane.problemy);
 
 			System.out.println("wybierz problem do rozwiązania ");
-			int indexProblemu = wyborIndexu(1,dane.problemy.length)-1;//indexy problemów
-			argumenty = new String[]{""+indexProblemu};
+			int indexProblemu = wyborIndexu(1,dane.problemy.length);//indexy problemów
+
+			argumenty = new String[]{""+(indexProblemu-1)};
+			if(indexProblemu==-1){
+				przycisk = "wyloguj";
+				warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+				return;
+			}
 		}
 		else if (index == 2) {
 			przycisk = "blokada";
@@ -202,6 +227,11 @@ public class widok implements zmianaWidoku {
 
 			System.out.println("Wybierz konto do zablokowania:");
 			int indexKonta = wyborIndexu(1,dane.uzytkownicy.length)-1;//indexy kont
+			if(indexKonta<0){
+				przycisk = "wyloguj";
+				warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+				return;
+			}
 
 			if (!poprosOPotwierdzenie()) {
 				return;
@@ -246,9 +276,17 @@ public class widok implements zmianaWidoku {
 		}
 		else if (index ==2 ){
 			przycisk = "usunecieoferty";
+			wyswietlUsuwanieOferty(dane.oferty);
 			System.out.println("wybierz index oferty do usunięcia ");
-			int indexoferty  = wyborIndexu(0,3);//indexy kont
-			argumenty = new String[]{""+indexoferty};
+			int indexoferty  = wyborIndexu(1,dane.oferty.length);//indexy kont
+			if(indexoferty < 0 ){
+				przycisk = "wyloguj";
+				warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
+				return;
+
+			}
+
+			argumenty = new String[]{""+(indexoferty-1)};
 		}
 
 		warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);

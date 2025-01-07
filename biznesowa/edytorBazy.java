@@ -3,6 +3,7 @@ package biznesowa;
 import dane.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class edytorBazy {
 
@@ -10,6 +11,9 @@ public class edytorBazy {
 
 	public void pomozTechnicznie(int index ) {
 		baza b = dane.zwrocBaze();
+		if(b.problemy.length==0){
+			return;
+		}
 		problem[] arr_new = new problem[b.problemy.length-1];
 
 		for(int i=0, k=0;i<b.problemy.length;i++){
@@ -84,18 +88,35 @@ public class edytorBazy {
 	 * 
 	 * @param argumenty
 	 */
-	public void dodajOferte(String[] argumenty) {
+	public void dodajOferte(String[] argumenty,uzytkownik dostawca) {
+		baza b = dane.zwrocBaze();
+
+		oferta o = new oferta(Float.parseFloat(argumenty[0]),argumenty[1],(uslugodawca) dostawca,argumenty[2],new float[]{} );
+		List<oferta> of = new java.util.ArrayList<oferta>(Arrays.stream(b.oferty).toList());
+		of.add(o);
+		b.oferty = of.toArray(new oferta[0]);
+		dane.ustawBaze(b);
+
 		// TODO - implement edytorBazy.dodajOferte
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * 
 	 * @param argumenty
 	 */
-	public void usunOferte(String[] argumenty) {
+	public void usunOferte(String[] argumenty,uzytkownik dostawca ) {
+		baza b = dane.zwrocBaze();
+
+//		oferta o = new oferta(Float.parseFloat(argumenty[0]),argumenty[1],(uslugodawca) dostawca,argumenty[2],new float[]{} );
+		List<oferta> of = new java.util.ArrayList<oferta>(Arrays.stream(b.oferty).toList());
+		of.remove(Integer.parseInt(argumenty[0]));
+		System.out.println("TO JEST BARDZO NIEPOPRAWNE PRZY WIĘCEJ NIŻ 1 DOSTAWCY ");
+		b.oferty = of.toArray(new oferta[0]);
+		dane.ustawBaze(b);
+
 		// TODO - implement edytorBazy.usunOferte
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
 	}
 
 	/**
