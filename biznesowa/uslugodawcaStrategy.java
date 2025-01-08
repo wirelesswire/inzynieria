@@ -19,7 +19,7 @@ public class uslugodawcaStrategy implements Strategia {
 	@Override
 	public pozyskaneDane przetworzDane(dane dane, uzytkownik uzytkownik) {
 		if (!(uzytkownik instanceof uslugodawca)) {
-			throw new IllegalArgumentException("Podany użytkownik nie jest usługodawcą.");
+			throw new IllegalArgumentException("Podany uzytkownik nie jest uslugodawca.");
 		}
 
 		uslugodawca uslugodawca = (uslugodawca) uzytkownik;

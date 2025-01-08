@@ -29,7 +29,7 @@ public class czyJestAktywny implements obslugaLogowania {
 					w.tresc = "uzytkownik zablokowany";
 				}
 				else{
-					w.tresc = "wystąpił bład ";
+					w.tresc = "wystapil blad ";
 				}
 			}
 		}

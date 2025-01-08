@@ -21,7 +21,7 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 //					w.tresc="zalogowano pomyslnie";
 				}
 				else {
-					w.tresc="błędne haslo";
+					w.tresc="bledne haslo";
 					return  w;
 				}
 				break;

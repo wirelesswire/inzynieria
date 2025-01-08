@@ -12,7 +12,7 @@ public class pracownikStrategy implements Strategia {
 	@Override
 	public pozyskaneDane przetworzDane(dane dane, uzytkownik uzytkownik) {
 		if (!(uzytkownik instanceof pracownik)) {
-			throw new IllegalArgumentException("Podany użytkownik nie jest pracownikiem.");
+			throw new IllegalArgumentException("Podany uzytkownik nie jest pracownikiem.");
 		}
 
 		pracownik prac = (pracownik) uzytkownik;

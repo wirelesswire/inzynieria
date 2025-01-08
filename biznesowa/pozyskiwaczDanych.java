@@ -24,7 +24,7 @@ public class pozyskiwaczDanych {
 	// Metoda pozyskiwania danych
 	public pozyskaneDane pozyskajDane() {
 		if (strategia == null) {
-			throw new IllegalStateException("Strategia nie została ustawiona.");
+			throw new IllegalStateException("Strategia nie zostala ustawiona.");
 		}
 		this.pozyskaneDane = strategia.przetworzDane(dane , uzytkownik);
 		return this.pozyskaneDane;

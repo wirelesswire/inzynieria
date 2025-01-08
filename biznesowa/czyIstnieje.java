@@ -34,7 +34,7 @@ public class czyIstnieje implements obslugaLogowania {
 			return next.sprawdz(login, haslo, pozyskiwaczDanych);
 		}
 		else {
-			w.tresc = "konto o podanym loginie nie istenije";
+			w.tresc = "konto o podanym loginie nie istnieje";
 		}
 
 //

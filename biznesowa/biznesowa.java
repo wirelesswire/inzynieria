@@ -70,7 +70,7 @@ public class biznesowa implements przetwarzanieDanych {
 					s = new klientStrategy();
 				}
 				else{
-					System.out.println("B??DDD");
+					System.out.println("Blad");
 				}
 				if(s != null){
 					pozyskiwacz.setStrategia(s);
@@ -79,21 +79,21 @@ public class biznesowa implements przetwarzanieDanych {
 				break;
 			case "dodanieoferty":
 				edytorbazy.dodajOferte(argumenty, uzytkownik);
-				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś dodanie oferty "));
+				widok.wyswietlWiadomosc(new wiadomosc("wybrano dodanie oferty "));
 				break;
 			case "usunecieoferty":
 				edytorbazy.usunOferte(argumenty,uzytkownik);
-				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś usuniecie oferty "));
+				widok.wyswietlWiadomosc(new wiadomosc("wybrano usuniecie oferty "));
 				break;
 			case "pomoc":
-				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś udzielenie pomocy  "));
+				widok.wyswietlWiadomosc(new wiadomosc("wybrano udzielenie pomocy  "));
 //				pracownikStrategy p = new pracownikStrategy();
 //				pozyskiwacz.setStrategia(p);
 				edytorbazy.pomozTechnicznie(Integer.parseInt( argumenty[0]));
 
 				break;
 			case "blokada":
-				widok.wyswietlWiadomosc(new wiadomosc("wybrałeś blokade konta  "));
+				widok.wyswietlWiadomosc(new wiadomosc("wybrano blokade konta  "));
 				edytorbazy.zablokujKonto(Integer.parseInt( argumenty[0]));
 				break;
 			case "wyloguj":

@@ -24,7 +24,7 @@ public class widok implements zmianaWidoku {
 
 		String login  = scanner.nextLine();
 
-		System.out.println("hasło :  ");
+		System.out.println("haslo :  ");
 
 		String haslo  = scanner.nextLine();
 
@@ -211,7 +211,7 @@ public class widok implements zmianaWidoku {
 			przycisk="pomoc";
 			wyswietlPomocTechniczna(dane.problemy);
 
-			System.out.println("wybierz problem do rozwiązania ");
+			System.out.println("wybierz problem do rozwiazania ");
 			int indexProblemu = wyborIndexu(1,dane.problemy.length);//indexy problemów
 
 			argumenty = new String[]{""+(indexProblemu-1)};
@@ -250,15 +250,15 @@ public class widok implements zmianaWidoku {
 	public void wyswietlWidokUslugodawcy(daneDlaUslugodawcy dane) {
 
 		if(!(dane instanceof daneDlaUzytkownika)){
-			System.out.println("BŁĄAD BOŻY");
+			System.out.println("BŁAAD DUZY");
 
 			return ;
 		}
 		System.out.println("widok usługodawcy ");
 
-		System.out.println("wyswietlam listę klientów ");
+		System.out.println("wyswietlam liste klientow ");
 
-		System.out.println("wybierz opcje 1.dodaj ofertę  2.usun ofertę  ");
+		System.out.println("wybierz opcje 1.dodaj oferte  2.usun oferte  ");
 
 		String przycisk = "";
 		String[] argumenty = new String[]{};
@@ -307,7 +307,7 @@ public class widok implements zmianaWidoku {
 	public int  wyborIndexu(int min , int max ){ // -1 to wyloguj
 
 		while(true){
-			System.out.println("wybierz index od "+min+ " do " + max +" lub " +(max+1) +" aby się wylogowac" );
+			System.out.println("wybierz index od "+min+ " do " + max +" lub " +(max+1) +" aby sie wylogowac" );
 
 			int  input =Integer.parseInt( scanner.nextLine());
 			if(input == max+1){
@@ -325,12 +325,12 @@ public class widok implements zmianaWidoku {
 	public String[] wprowadzStringi(int ile,String[] nazwy  ){
 
 		if(nazwy.length != ile){
-			System.out.println("NIE DZIAŁA POPRAWNIE,ZŁE DANE ");
+			System.out.println("NIE DZIALA POPRAWNIE,ZLE DANE ");
 		}
 		String[] ret = new String[ile];
 
 		for (int i = 0; i <ile ; i++) {
-			System.out.println("podaj"+nazwy[i]);
+			System.out.println("podaj "+nazwy[i]);
 			ret[i] = scanner.nextLine();
 		}
 
