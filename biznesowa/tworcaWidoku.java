@@ -8,23 +8,26 @@ public class tworcaWidoku {
 	 * @param uzytkownik
 	 */
 	public daneDlaUzytkownika stworzWidok(pozyskaneDane pozyskaneDane, uzytkownik uzytkownik) {
-		daneDlaUzytkownika d = null ;
-		tworcaWidoku tw  ;
+		daneDlaUzytkownika daneDlaUzytkownika = null ;
+
 		if(uzytkownik instanceof pracownik){
-			d = new tworcaPracownika().stworzDane(pozyskaneDane);
+			tworcaPracownika tworcaPracownika = new tworcaPracownika();
+			daneDlaUzytkownika  =  tworcaPracownika.stworzDane(pozyskaneDane);
 		}
 		else if(uzytkownik instanceof uslugodawca){
-			d = new tworcaUslugodawcy().stworzDane(pozyskaneDane);
+			tworcaUslugodawcy tworcaUslugodawcy = new tworcaUslugodawcy();
+			daneDlaUzytkownika  = tworcaUslugodawcy.stworzDane(pozyskaneDane);
 		}
 		else if(uzytkownik instanceof klient){
-			d = new tworcaKlienta().stworzDane(pozyskaneDane);
+			tworcaKlienta tworcaKlienta  = new tworcaKlienta();
+			daneDlaUzytkownika   =  tworcaKlienta.stworzDane(pozyskaneDane);
 		}
 		else {
 			System.out.println("(brak widoku )");
 		}
 
 
-		return d ;
+		return daneDlaUzytkownika   ;
 	}
 
 }

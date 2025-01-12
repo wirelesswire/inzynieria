@@ -108,35 +108,31 @@ public class biznesowa implements przetwarzanieDanych {
 	}
 	public void wyswietlWidok(){
 
-		pozyskaneDane pDane = pozyskajDane();
-		daneDlaUzytkownika d = stworzWidok(pDane,uzytkownik);
+		pozyskaneDane pozyskaneDane = pozyskajDane();
+		daneDlaUzytkownika daneDlaUzytkownika= stworzWidok(pozyskaneDane,uzytkownik);
 
 		if(this.uzytkownik instanceof pracownik ){
-			widok.wyswietlWidokPracownika((daneDlaPracownika)d);
+			widok.wyswietlWidokPracownika((daneDlaPracownika)daneDlaUzytkownika);
 		}
 		else if(this.uzytkownik instanceof uslugodawca){
-			widok.wyswietlWidokUslugodawcy((daneDlaUslugodawcy) d);
+			widok.wyswietlWidokUslugodawcy((daneDlaUslugodawcy) daneDlaUzytkownika);
 		}
 		else if(this.uzytkownik instanceof klient){
-			widok.wyswietlWidokKlienta((daneDlaKlienta) d);
+			widok.wyswietlWidokKlienta((daneDlaKlienta) daneDlaUzytkownika);
 		}
 		else {
 			widok.pokazLogowanie();
 		}
 	}
-
-
-
 	/**
 	 * 
 	 * @param pozyskaneDane
 	 * @param uzytkownik
 	 */
 	public daneDlaUzytkownika stworzWidok(pozyskaneDane pozyskaneDane, uzytkownik uzytkownik) {
-
-		tworcaWidoku tw = new tworcaWidoku();
-		daneDlaUzytkownika  d =tw.stworzWidok(pozyskaneDane,uzytkownik);
-		return  d ;
+		tworcaWidoku tworcaWidoku = new tworcaWidoku();
+		daneDlaUzytkownika  daneDlaUzytkownika =tworcaWidoku.stworzWidok(pozyskaneDane,uzytkownik);
+		return  daneDlaUzytkownika;
 	}
 
 	/**
