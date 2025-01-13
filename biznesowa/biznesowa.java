@@ -87,10 +87,7 @@ public class biznesowa implements przetwarzanieDanych {
 				break;
 			case "pomoc":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrano udzielenie pomocy  "));
-//				pracownikStrategy p = new pracownikStrategy();
-//				pozyskiwacz.setStrategia(p);
 				edytorbazy.pomozTechnicznie(Integer.parseInt( argumenty[0]));
-
 				break;
 			case "blokada":
 				widok.wyswietlWiadomosc(new wiadomosc("wybrano blokade konta  "));
@@ -104,6 +101,7 @@ public class biznesowa implements przetwarzanieDanych {
 				System.out.println("lol");
 		}
 		wyswietlWidok();
+
 
 	}
 	public void wyswietlWidok(){
