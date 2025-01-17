@@ -3,10 +3,6 @@ import  dane.*;
 
 public class tworcaPracownika extends tworcaWidoku {
 
-
-
-
-
 	/**
 	 * 
 	 * @param pozyskaneDane

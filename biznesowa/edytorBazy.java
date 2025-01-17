@@ -46,9 +46,13 @@ public class edytorBazy {
 		throw new UnsupportedOperationException();
 	}
 
-	public void usunOferte() {
-		// TODO - implement edytorBazy.usunOferte
-		throw new UnsupportedOperationException();
+	public void usunOferte(int id ) {
+		baza b = dane.zwrocBaze();
+		List<oferta> of = new java.util.ArrayList<oferta>(Arrays.stream(b.oferty).toList());
+		of.remove(id);
+		b.oferty = of.toArray(new oferta[0]);
+		dane.ustawBaze(b);
+
 	}
 
 	public void anulujUsluge() {
@@ -96,7 +100,6 @@ public class edytorBazy {
 		of.add(o);
 		b.oferty = of.toArray(new oferta[0]);
 		dane.ustawBaze(b);
-
 		// TODO - implement edytorBazy.dodajOferte
 //		throw new UnsupportedOperationException();
 	}
@@ -105,18 +108,16 @@ public class edytorBazy {
 	 * 
 	 * @param argumenty
 	 */
-	public void usunOferte(String[] argumenty,uzytkownik dostawca ) {
-		baza b = dane.zwrocBaze();
+	public void usunOferte(String[] argumenty,uzytkownik dostawca ) {// to trzebva wziąć jego ofertę
 
-//		oferta o = new oferta(Float.parseFloat(argumenty[0]),argumenty[1],(uslugodawca) dostawca,argumenty[2],new float[]{} );
-		List<oferta> of = new java.util.ArrayList<oferta>(Arrays.stream(b.oferty).toList());
-		of.remove(Integer.parseInt(argumenty[0]));
-		System.out.println("TO JEST BARDZO NIEPOPRAWNE PRZY WIĘCEJ NIŻ 1 DOSTAWCY ");
-		b.oferty = of.toArray(new oferta[0]);
-		dane.ustawBaze(b);
 
-		// TODO - implement edytorBazy.usunOferte
-//		throw new UnsupportedOperationException();
+		for (int i = 0; i < argumenty.length ; i++) {
+
+
+			usunOferte(Integer.parseInt( argumenty[i]));
+
+		}
+
 	}
 
 	/**

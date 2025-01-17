@@ -45,51 +45,77 @@ public class biznesowa implements przetwarzanieDanych {
 		throw new UnsupportedOperationException();
 	}
 
+
+
+
+public void zalogowano(){
+
+	pozyskiwacz  = new pozyskiwaczDanych(this.uzytkownik);
+	pozyskiwacz.dane= dane ;
+	Strategia s = null ;
+	if(this.uzytkownik instanceof pracownik ){
+		s = new pracownikStrategy();
+	}
+	else if(this.uzytkownik instanceof uslugodawca){
+		s = new uslugodawcaStrategy();
+	}
+	else if(this.uzytkownik instanceof klient){
+		s = new klientStrategy();
+	}
+	else{
+		System.out.println("Blad");
+	}
+	if(s != null){
+		pozyskiwacz.setStrategia(s);
+
+	}
+	wyswietlWidok();
+}
 	/**
 	 *
 	 * @param przycisk
 	 * @param argumenty
 	 */
 	public void kliknietyPrzycisk(String przycisk, String[] argumenty) {
+		boolean potwierdzenie = false;
 		switch (przycisk){
 			case "zaloguj":
 				boolean logowanieUdane = zaloguj(argumenty[0],argumenty[1]);
 				if( ! logowanieUdane){
 					break;
 				}
-				pozyskiwacz  = new pozyskiwaczDanych(this.uzytkownik);
-				pozyskiwacz.dane= dane ;
-				Strategia s = null ;
-				if(this.uzytkownik instanceof pracownik ){
-					s = new pracownikStrategy();
-				}
-				else if(this.uzytkownik instanceof uslugodawca){
-					s = new uslugodawcaStrategy();
-				}
-				else if(this.uzytkownik instanceof klient){
-					s = new klientStrategy();
-				}
-				else{
-					System.out.println("Blad");
-				}
-				if(s != null){
-					pozyskiwacz.setStrategia(s);
-
-				}
-				break;
+				zalogowano();
+				return;
+//				break;
 			case "dodanieoferty":
+				potwierdzenie =  widok.poprosOPotwierdzenie();
+				if(!potwierdzenie){
+					break;
+				}
 				edytorbazy.dodajOferte(argumenty, uzytkownik);
 				widok.wyswietlWiadomosc(new wiadomosc("wybrano dodanie oferty "));
 				break;
 			case "usunecieoferty":
+				 potwierdzenie =  widok.poprosOPotwierdzenie();
+				if(!potwierdzenie){
+					break;
+				}
 				edytorbazy.usunOferte(argumenty,uzytkownik);
 				widok.wyswietlWiadomosc(new wiadomosc("wybrano usuniecie oferty "));
 				break;
 			case "pomoc":
+				potwierdzenie =  widok.poprosOPotwierdzenie();
+				if(!potwierdzenie){
+					break;
+				}
 				widok.wyswietlWiadomosc(new wiadomosc("wybrano udzielenie pomocy  "));
 				edytorbazy.pomozTechnicznie(Integer.parseInt( argumenty[0]));
 				break;
 			case "blokada":
+				potwierdzenie =  widok.poprosOPotwierdzenie();
+				if(!potwierdzenie){
+					break;
+				}
 				widok.wyswietlWiadomosc(new wiadomosc("wybrano blokade konta  "));
 				edytorbazy.zablokujKonto(Integer.parseInt( argumenty[0]));
 				break;

@@ -22,9 +22,7 @@ public class tworcaWidoku {
 			tworcaKlienta tworcaKlienta  = new tworcaKlienta();
 			daneDlaUzytkownika   =  tworcaKlienta.stworzDane(pozyskaneDane);
 		}
-		else {
-			System.out.println("(brak widoku )");
-		}
+
 
 
 		return daneDlaUzytkownika   ;

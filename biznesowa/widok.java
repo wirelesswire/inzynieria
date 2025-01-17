@@ -232,10 +232,10 @@ public class widok implements zmianaWidoku {
 				warstwaBiznesowa.kliknietyPrzycisk(przycisk, argumenty);
 				return;
 			}
-
-			if (!poprosOPotwierdzenie()) {
-				return;
-			}
+//
+//			if (!poprosOPotwierdzenie()) {
+//				return;
+//			}
 
 			argumenty = new String[]{""+indexKonta};
 		}
