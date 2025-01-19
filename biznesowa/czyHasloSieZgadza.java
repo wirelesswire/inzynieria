@@ -13,12 +13,14 @@ public class czyHasloSieZgadza implements obslugaLogowania {
 	 * @param pozyskiwaczDanych
 	 */
 	public wiadomosc sprawdz(String login, String haslo, pozyskiwaczDanych pozyskiwaczDanych) {
-		wiadomosc w = new wiadomosc();
+		wiadomosc w = new wiadomosc("taki uzytkownik nie istnieje");
+
 		for (int i = 0; i < pozyskiwaczDanych.pozyskaneDane.uzytkownicy.length ; i++) {
 			uzytkownik tmpUser = pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i];
 			if(Objects.equals(tmpUser.getLogin(), login)){
 				if(Objects.equals(tmpUser.getHaslo(), haslo)){
 //					w.tresc="zalogowano pomyslnie";
+					w.tresc = null;
 				}
 				else {
 					w.tresc="bledne haslo";

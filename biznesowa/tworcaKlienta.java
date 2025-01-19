@@ -8,6 +8,9 @@ public class tworcaKlienta extends tworcaWidoku {
 	 */
 	public daneDlaKlienta stworzDane(pozyskaneDane pozyskaneDane) {
 		daneDlaKlienta d = new daneDlaKlienta();
+		if(pozyskaneDane == null){
+			throw  new NullPointerException();
+		}
 		d.oferty = pozyskaneDane.oferty;
 		return d ;
 	}

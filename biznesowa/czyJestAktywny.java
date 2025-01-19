@@ -28,6 +28,9 @@ public class czyJestAktywny implements obslugaLogowania {
 				else if (Objects.equals(tmpUser.getStatus(), "zablokowany")) {
 					w.tresc = "uzytkownik zablokowany";
 				}
+				else if(Objects.equals(tmpUser.getStatus(), null)){
+					throw new  NullPointerException();
+				}
 				else{
 					w.tresc = "wystapil blad ";
 				}

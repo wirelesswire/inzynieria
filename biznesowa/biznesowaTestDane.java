@@ -1,12 +1,13 @@
+package biznesowa;
 import dane.*;
-//import widok.*;
-import biznesowa.*;
+import dane.dane;
 
+public class biznesowaTestDane {
 
-public  class Start {
+    static biznesowa b;
+    static dane dane ;
 
-
-    public static void main (String[] args ){
+    public static void setup (){
 
         widok widok = new widok();
 
@@ -15,16 +16,16 @@ public  class Start {
 
         widok.warstwaBiznesowa = biznesowa;
 
-        dane dane= new dane();
+        dane= new dane();
         baza b = createBaza();
         dane.ustawBaze(b);
         biznesowa.dane = dane;
         biznesowa.edytorbazy.dane = dane;
-        widok.pokazLogowanie();
+//        widok.pokazLogowanie();
 
     }
 
-    public static baza  createBaza(){
+    public static baza createBaza(){
 
         // Tworzenie pracowników
         pracownik[] pracownicy = new pracownik[] {
@@ -78,7 +79,6 @@ public  class Start {
 
 
     }
-
 
 
 

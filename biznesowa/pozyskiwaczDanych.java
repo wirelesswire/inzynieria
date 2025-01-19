@@ -12,7 +12,7 @@ public class pozyskiwaczDanych {
 	public dane dane;
 
 	// Konstruktor
-	public pozyskiwaczDanych(uzytkownik uzytkownik) {
+	public pozyskiwaczDanych(uzytkownik uzytkownik ) {
 		this.uzytkownik = uzytkownik;
 	}
 
