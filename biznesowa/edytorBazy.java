@@ -9,6 +9,12 @@ public class edytorBazy {
 
 	public dane dane;
 
+
+//	public edytorBazy(dane dane ){
+//	this.dane = dane;
+//	}
+
+
 	public void pomozTechnicznie(int index ) {
 		baza b = dane.zwrocBaze();
 		if(b.problemy.length==0){

@@ -13,13 +13,22 @@ public class biznesowa implements przetwarzanieDanych {
 	private czyIstnieje obslugaLogowania;
 	public dane dane;
 
+	public void setUzytkownik(uzytkownik u ){
+		this.uzytkownik = u ;
+	}
+
+	public pozyskiwaczDanych getPozyskiwacz(){
+		return pozyskiwacz;
+	}
+	public uzytkownik getUzytkownik(){
+		return uzytkownik;
+	}
 	/**
 	 * 
 	 * @param login
 	 * @param haslo
 	 */
 	public boolean zaloguj(String login, String haslo) {
-
 		pozyskiwacz  = new pozyskiwaczDanych(null); // null tylko tutaj w reszcie zapewne błąd
 		Strategia s = new logowanieStrategy(this.dane);
 		pozyskiwacz.setStrategia(s);
@@ -28,7 +37,6 @@ public class biznesowa implements przetwarzanieDanych {
 
 		if(x.tresc == null ){
 			this.uzytkownik = obslugaLogowania.user;
-//					pozyskaneDane  d = pozyskajDane();
 			return  true ;
 		}
 		else{
@@ -36,7 +44,6 @@ public class biznesowa implements przetwarzanieDanych {
 		}
 		return  false ;
 
-//		throw new UnsupportedOperationException();
 
 	}
 
@@ -44,9 +51,6 @@ public class biznesowa implements przetwarzanieDanych {
 		// TODO - implement biznesowa.stworzDane
 		throw new UnsupportedOperationException();
 	}
-
-
-
 
 public void zalogowano(){
 
@@ -120,8 +124,9 @@ public void zalogowano(){
 				edytorbazy.zablokujKonto(Integer.parseInt( argumenty[0]));
 				break;
 			case "wyloguj":
-				this.uzytkownik = null ;
+				wyloguj();
 				widok.pokazLogowanie();
+
 				return;
 			default:
 				System.out.println("lol");
@@ -130,10 +135,16 @@ public void zalogowano(){
 
 
 	}
-	public void wyswietlWidok(){
 
+	public void wyloguj(){
+		this.uzytkownik = null ;
+		throw new UnsupportedOperationException();
+
+	}
+
+	public void wyswietlWidok(){
 		pozyskaneDane pozyskaneDane = pozyskajDane();
-		daneDlaUzytkownika daneDlaUzytkownika= stworzWidok(pozyskaneDane,uzytkownik);
+		daneDlaUzytkownika daneDlaUzytkownika= stworzWidok(pozyskaneDane);
 
 		if(this.uzytkownik instanceof pracownik ){
 			widok.wyswietlWidokPracownika((daneDlaPracownika)daneDlaUzytkownika);
@@ -151,14 +162,13 @@ public void zalogowano(){
 	/**
 	 * 
 	 * @param pozyskaneDane
-	 * @param uzytkownik
+//	 * @param uzytkownik
 	 */
-	public daneDlaUzytkownika stworzWidok(pozyskaneDane pozyskaneDane, uzytkownik uzytkownik) {
+	public daneDlaUzytkownika stworzWidok(pozyskaneDane pozyskaneDane) {
 		tworcaWidoku tworcaWidoku = new tworcaWidoku();
-		daneDlaUzytkownika  daneDlaUzytkownika =tworcaWidoku.stworzWidok(pozyskaneDane,uzytkownik);
+		daneDlaUzytkownika  daneDlaUzytkownika =tworcaWidoku.stworzWidok(pozyskaneDane,this.uzytkownik);
 		return  daneDlaUzytkownika;
 	}
-
 	/**
 	 * 
 	 * @param edytor
@@ -166,7 +176,7 @@ public void zalogowano(){
 	 */
 	public biznesowa(edytorBazy edytor, widok widok) {
 		this.edytorbazy = edytor;
-//		this.pozyskiwacz = pozyskiwacz;
+		this.pozyskiwacz = new pozyskiwaczDanych(null);
 		this.widok = widok;
 
 		czyIstnieje czy1 = new czyIstnieje();

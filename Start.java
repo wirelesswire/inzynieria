@@ -14,10 +14,8 @@ public  class Start {
         biznesowa biznesowa = new biznesowa(edytorBazy,widok) ;
 
         widok.warstwaBiznesowa = biznesowa;
-
         dane dane= new dane();
-        baza b = createBaza();
-        dane.ustawBaze(b);
+        dane.ustawBaze(createBaza());
         biznesowa.dane = dane;
         biznesowa.edytorbazy.dane = dane;
         widok.pokazLogowanie();

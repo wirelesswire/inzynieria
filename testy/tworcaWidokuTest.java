@@ -1,5 +1,6 @@
-package biznesowa;
+package testy;//package biznesowa;
 
+import biznesowa.*;
 import dane.dane;
 import dane.pracownik;
 import dane.uzytkownik;
@@ -12,7 +13,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
 
+
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class tworcaWidokuTest implements TestExecutionExceptionHandler{
 

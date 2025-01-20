@@ -1,10 +1,10 @@
-package biznesowa;
+package testy;
 
+import biznesowa.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import biznesowa.*;
 import dane.*;
 //import mockit.*;
 import org.junit.jupiter.api.*;
@@ -12,15 +12,6 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 
 @TestMethodOrder(OrderAnnotation.class)
@@ -47,6 +38,8 @@ public class CzyHasloSieZgadzaJUnitTest implements TestExecutionExceptionHandler
 
     @Test
     @Order(1)
+    @ExtendWith(CzyHasloSieZgadzaJUnitTest.class)
+    @Tag("haslo")
     void sprawdzPoprawneHaslo() {
         pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
         pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
@@ -72,18 +65,10 @@ public class CzyHasloSieZgadzaJUnitTest implements TestExecutionExceptionHandler
         }
         else throw throwable;
     }
-
-//    @Test
-//    @Order(2)
-//    void sprawdzBledneHaslo() {
-//        pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
-//        pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
-//        pozyskiwaczDanych.pozyskajDane();
-//        wiadomosc wiadomosc = czyHasloSieZgadza.sprawdz("test", "złehasło", pozyskiwaczDanych);
-//        assertEquals("bledne haslo", wiadomosc.tresc);
-//    }
     @Test
     @Order(3)
+    @Tag("haslo")
+    @ExtendWith(CzyHasloSieZgadzaJUnitTest.class)
     void sprawdzBrakUzytkownika() {
         pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
         pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
@@ -93,13 +78,5 @@ public class CzyHasloSieZgadzaJUnitTest implements TestExecutionExceptionHandler
         assertEquals(wiadomosc.tresc,"taki uzytkownik nie istnieje");
     }
 
-//    @Test
-//    @Order(4)
-//    void testNextNotNull() {
-//        pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
-//        pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
-//        pozyskiwaczDanych.pozyskajDane();
-//        czyHasloSieZgadza.sprawdz("test", "test", pozyskiwaczDanych);
-//    }
 
 }

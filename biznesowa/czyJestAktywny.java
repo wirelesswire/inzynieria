@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class czyJestAktywny implements obslugaLogowania {
 
-	private obslugaLogowania next;
+	public obslugaLogowania next;
 
 	/**
 	 * 
@@ -20,6 +20,7 @@ public class czyJestAktywny implements obslugaLogowania {
 			uzytkownik tmpUser = pozyskiwaczDanych.pozyskaneDane.uzytkownicy[i];
 			if(Objects.equals(tmpUser.getLogin(), login)){
 				if(Objects.equals(tmpUser.getStatus(), "aktywny")){
+//					w.tresc = "";
 					break;
 				}
 				else if(Objects.equals(tmpUser.getStatus(), "nieaktywny")){

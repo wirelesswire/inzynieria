@@ -1,6 +1,6 @@
 
 
-package  biznesowa;
+package testy;
 
 
 import biznesowa.*;
@@ -12,12 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,6 +45,7 @@ public class CzyJestAktywnyJUnitTest implements TestExecutionExceptionHandler {
     @MethodSource("uzytkownicyProvider")
     @ExtendWith(CzyJestAktywnyJUnitTest.class)
     @Order(1)
+    @Tag("aktywnosc")
     void sprawdzStatusUzytkownika(final uzytkownik uzytkownik) {
 
         pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
@@ -78,6 +75,9 @@ public class CzyJestAktywnyJUnitTest implements TestExecutionExceptionHandler {
     }
     @Test
     @Order(2)
+    @Tag("aktywnosc")
+
+    @ExtendWith(CzyJestAktywnyJUnitTest.class)
     void sprawdzBrakUzytkownika() {
         pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
         pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
@@ -88,12 +88,40 @@ public class CzyJestAktywnyJUnitTest implements TestExecutionExceptionHandler {
 
     @Test
     @Order(3)
-    void testNextNotNull() {
+    @Tag("aktywnosc")
+
+    @ExtendWith(CzyJestAktywnyJUnitTest.class)
+    void testTextOk() {
         pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
         pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
         pozyskiwaczDanych.pozyskajDane();
-        czyJestAktywny.sprawdz("test", "test", pozyskiwaczDanych);
+        wiadomosc w = czyJestAktywny.sprawdz("test", "test", pozyskiwaczDanych);// nie istnieje
+        assertNull(w.tresc);
+        w = czyJestAktywny.sprawdz("anna.kowalska", "haslo123", pozyskiwaczDanych);//aktywny
+        assertNull(w.tresc);
+        w = czyJestAktywny.sprawdz("ewa.nowak", "haslo789", pozyskiwaczDanych); // zablokowany
+        assertNotNull(w.tresc);
     }
+
+    @Test
+    @Order(4)
+    @Tag("aktywnosc")
+
+    @ExtendWith(CzyJestAktywnyJUnitTest.class)
+    void testSetsNextCorrectly(){
+        pozyskiwaczDanych pozyskiwaczDanych = new pozyskiwaczDanych(null);
+        pozyskiwaczDanych.setStrategia(new logowanieStrategy(daneTestowe));
+        pozyskiwaczDanych.pozyskajDane();
+        czyIstnieje c = new czyIstnieje();
+
+        Assertions.assertEquals(null , czyJestAktywny.next);
+        czyJestAktywny.setNext(c);
+        Assertions.assertEquals(c,czyJestAktywny.next);
+
+
+    }
+
+
 }
 
 

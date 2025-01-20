@@ -1,26 +1,31 @@
-package biznesowa;
+package testy;
+import biznesowa.*;
 import dane.*;
 import dane.dane;
+
 
 public class biznesowaTestDane {
 
     static biznesowa b;
-    static dane dane ;
+    public static dane dane ;
 
     public static void setup (){
 
         widok widok = new widok();
 
         edytorBazy edytorBazy = new edytorBazy();
-        biznesowa biznesowa = new biznesowa(edytorBazy,widok) ;
+        b= new biznesowa(edytorBazy,widok) ;
 
-        widok.warstwaBiznesowa = biznesowa;
+        widok.warstwaBiznesowa = b;
 
         dane= new dane();
-        baza b = createBaza();
-        dane.ustawBaze(b);
-        biznesowa.dane = dane;
-        biznesowa.edytorbazy.dane = dane;
+        baza baza = createBaza();
+        dane.ustawBaze(baza);
+        b.dane = dane;
+        b.edytorbazy = edytorBazy;
+        b.edytorbazy.dane = dane;
+
+
 //        widok.pokazLogowanie();
 
     }
